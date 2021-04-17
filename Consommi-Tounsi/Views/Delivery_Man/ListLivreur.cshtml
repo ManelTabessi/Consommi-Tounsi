@@ -103,6 +103,20 @@
                     </div>
                 </div>
             </nav>
+            <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
 
                 <div class="content">
                     <div class="row">
@@ -138,15 +152,9 @@
                                                     @Html.ActionLink("List Delivery Man Disponible", "LivreurDispo")
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    @Html.ActionLink("Best Delivery Man", "BestLivreur")
-                                                </div>
-                                                <div class="col-lg-4" style="margin-left:300px">
-                                                    @Html.ActionLink("List Delivery Man Non Disponible", "LivreurNoDispo")
-                                                </div>
+                                            <div style="margin-left:600px">
+                                                @Html.ActionLink("List Delivery Man Non Disponible", "LivreurNoDispo")
                                             </div>
-                                            
                                         </div>
                                     </div>
 

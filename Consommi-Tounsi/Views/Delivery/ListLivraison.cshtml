@@ -24,7 +24,7 @@
             <!--
                 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
             -->
-            <div class="sidebar-wrapper" >
+            <div class="sidebar-wrapper " style="background-color:rosybrown">
                 <div class="logo">
                     <a href="javascript:void(0)" class="simple-text logo-mini">
 
@@ -79,7 +79,12 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto">
-                            
+                            <li class="search-bar input-group">
+                                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
+                                    <i class="tim-icons icon-zoom-split"></i>
+                                    <span class="d-lg-none d-md-block">Search</span>
+                                </button>
+                            </li>
 
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -130,7 +135,9 @@
                                     @{
                                         ViewBag.Title = "ListLivraison";
                                     }
-                                    
+                                    <p>
+                                        @Html.ActionLink("Create New", "Create")
+                                    </p>
                                     <table class="table">
                                         <tr>
                                             <th>
