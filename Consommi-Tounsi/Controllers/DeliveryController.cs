@@ -109,7 +109,7 @@ namespace Consommi_Tounsi.Controllers
         // POST: Delivery/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Delivery del, int id_deliv_man, int id_ord)
+        public async Task<ActionResult> Create(Delivery del, int id_deliv_man)
         {
             string Baseurl = "http://localhost:8089/SpringMVC/servlet/";
 
