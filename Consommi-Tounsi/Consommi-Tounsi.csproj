@@ -163,6 +163,7 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Commande.cs" />
     <Compile Include="Models\comments.cs" />
+    <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\publication.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Vote.cs" />
