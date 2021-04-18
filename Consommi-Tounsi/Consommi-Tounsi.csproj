@@ -338,6 +338,15 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\publication\Index.cshtml" />
+    <Content Include="Views\publication\Create.cshtml" />
+    <Content Include="Views\publication\Edit.cshtml" />
+    <Content Include="Views\publication\Delete.cshtml" />
+    <Content Include="Views\publication\IndexAdmin.cshtml" />
+    <Content Include="Views\publication\DeletepubAdmin.cshtml" />
+    <Content Include="Views\publication\Accepter.cshtml" />
+    <Content Include="Views\publication\Refuser.cshtml" />
+    <Content Include="Views\publication\IndexAdminaccepted.cshtml" />
+    <Content Include="Views\publication\deletePubsWithNoInteraction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

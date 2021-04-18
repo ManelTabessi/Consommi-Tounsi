@@ -1,69 +1,582 @@
 ﻿@model IEnumerable<Consommi_Tounsi.Models.publication>
-
 @{
     ViewBag.Title = "Index";
 }
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
 
-<h2>Index</h2>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idpub)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.contents)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date_discussion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.etat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClientFk)
-        </th>
-        <th></th>
-    </tr>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idpub)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contents)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date_discussion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.etat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClientFk)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    <!-- Site Metas -->
+    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-</table>
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="/Content/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/Content/img/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/Content/bootstrap1.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/Content/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/Content/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Content/custom.css">
+
+
+
+    <link href="/Content/animate.css" rel="stylesheet" type="text/css">
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<style>
+  
+    .attr-nav > ul > li > a {
+        color: #d32c2c;
+        display: block;
+        padding: 28px 15px;
+        position: relative;
+    }
+
+    .question-type2033 {
+        background-color: #fff;
+        margin-bottom: 20px;
+        padding: 20px;
+        box-shadow: 0px 0px 13px -3px #777;
+    }
+
+    .all-title-box {
+        background: url("/Content/img/Forum.PNG") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        text-align: center;
+        background-attachment: fixed;
+        padding: 70px 0px;
+        position: relative;
+    }
+        .all-title-box .breadcrumb {
+            background: #fffefe;
+            /* margin: 0px; */
+            display: inline-block;
+            /* border-radius: 0px; */
+            float: right;
+        }
+    .q-type238 {
+        margin-top: 23px;
+        background-color: #29bbea;
+        font-size: 10px;
+        padding: 5px 10px 5px 10px;
+        border-color:black;
+        border:dotted;
+        color: #fff;
+    }
+</style>
+<body>
+
+    <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="custom-select-box">
+
+                    </div>
+                    <div class="right-phone-box">
+
+                    </div>
+                    <div class="our-link">
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="login-box">
+                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                            <option>Register Here</option>
+                            <option>Sign In</option>
+                        </select>
+                    </div>
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/Content/img/logoConsomi.png" width="110px" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shop.html">Sidebar Shop</a></li>
+                                <li><a href="shop-detail.html">Shop Detail</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">FORUM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <li class="side-menu">
+                            <a href="#">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">3</span>
+                                <p>My Cart</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+            <div class="side">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                <li class="cart-box">
+                    <ul class="cart-list">
+                        <li>
+                            <a href="#" class="photo"><img src="/Content/img/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Delica omtantur </a></h6>
+                            <p>1x - <span class="price">$80.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="/Content/img/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Omnes ocurreret</a></h6>
+                            <p>1x - <span class="price">$60.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="/Content/img/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Agam facilisis</a></h6>
+                            <p>1x - <span class="price">$40.00</span></p>
+                        </li>
+                        <li class="total">
+                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="breadcrumb">
+                        @Html.ActionLink("ADD PUBLICATION", "Create")
+                        <li class="breadcrumb-item active" style="color:red"> </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+    <!-- Start Gallery  -->
+
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+
+
+                    </div>
+                </div>
+                @using (Html.BeginForm())
+                {
+
+                    <table>
+
+
+
+                        <tr>
+                            <td>
+                                <div>
+                                    <div class="footer-search" id="custom-search-input">
+                                        <div class="input-group col-md-12">
+
+                                            <span class="input-group-btn">
+
+                                                <i class="tim-icons icon-zoom-split"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  <input type="text" class="  search-query form-control user-control30" placeholder="Search here...." @Html.TextBox("subject")></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <center><td> <input type="submit" value="Search" id="submit" class="btn btn-fill btn-primary" style="background-color:red;border:ridge;border-color:red" /></td>
+
+                        </tr>
+
+                    </table>
+                }
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Publication</h1>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+
+                </div>
+            </div>
+ 
+
+            <!-- ======content section/body=====-->
+            <section class="main-content920">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="main">
+                                <input id="tab1" type="radio" name="tabs" checked>
+                                <label for="tab1">Publication</label>
+                                <input id="tab2" type="radio" name="tabs">
+                                <label for="tab2">Most Response</label>
+                                <input id="tab3" type="radio" name="tabs">
+                                <label for="tab3">Recently Answered</label>
+                                <input id="tab4" type="radio" name="tabs">
+                                <label for="tab4">No Answer</label>
+                                <input id="tab5" type="radio" name="tabs">
+                                <label for="tab5">Recent Post</label>
+
+
+                                @foreach (var item in Model)
+                                {
+
+                                    <section id="content1">
+                                        <tbody>
+                                            <!--Recent Question Content Section -->
+                                            <div class="question-type2033">
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                        <div class="left-user12923 left-user12923-repeat">
+                                                            <a href="#"><img src="~/Content/img/images.png" alt="image"> </a> <center> @Html.DisplayFor(modelItem => item.Client.username)</center>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <div class="right-description893">
+                                                            <div id="que-hedder2983">
+                                                                <h3><a href="post-deatils.html" target="_blank"> @Html.DisplayFor(modelItem => item.subject)</a></h3>
+                                                            </div>
+                                                            <div class="ques-details10018">
+                                                                <p>  @Html.DisplayFor(modelItem => item.contents)</p>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="ques-icon-info3293"> <a href="#"><i class="fa fa-star" aria-hidden="true"> 5 </i> </a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true">   @Html.DisplayFor(modelItem => item.date_discussion)</i></a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i aria-hidden="true"> </i></a> </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="ques-type302">
+                                                            <a href="#">
+                                                                <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true"></i>  @Html.ActionLink("Answer", "../comments/ListCmtrByPub", new { idpub = item.idpub })</button>
+                                                            </a>
+                                                            <a href="#">
+                                                                <button type="button" class="q-type238">  @Html.ActionLink("Create comment", "../comments/Create", new { idpub = item.idpub }) </button>
+                                                            </a>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tbody>
+
+                                    </section>
+                                }
+
+                                <!--  End of content-1------>
+
+                                <section id="content2">
+                                    <!--Most Response Content Section -->
+                                    <div class="question-type2033">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="left-user12923 left-user12923-repeat">
+                                                    <a href="#"><img src="image/images.png" alt="image"> </a> <a href="#"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="right-description893">
+                                                    <div id="que-hedder2983">
+                                                        <h3><a href="post-deatils.html" target="_blank">This is my first Question</a></h3>
+                                                    </div>
+                                                    <div class="ques-details10018">
+                                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.</p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="ques-icon-info3293"> <a href="#"><i class="fa fa-check" aria-hidden="true"> solved</i></a> <a href="#"><i class="fa fa-star" aria-hidden="true"> 5</i> </a> <a href="#"><i class="fa fa-folder" aria-hidden="true"> wordpress</i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 4 min ago</i></a> <a href="#"><i class="fa fa-comment" aria-hidden="true">  5 answer</i></a> <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </a> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="ques-type302">
+                                                    <a href="#">
+                                                        <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true">  333335 answer</i></button>
+                                                    </a>
+                                                    <a href="#">
+                                                        <button type="button" class="q-type23 button-ques2973"> <i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!----end of content-2----->
+
+                                <section id="content3">
+                                    <!--Recently answered Content Section -->
+                                    <div class="question-type2033">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="left-user12923 left-user12923-repeat">
+                                                    <a href="#"><img src="image/images.png" alt="image"> </a> <a href="#"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="right-description893">
+                                                    <div id="que-hedder2983">
+                                                        <h3><a href="post-deatils.html" target="_blank">This is my first Question</a></h3>
+                                                    </div>
+                                                    <div class="ques-details10018">
+                                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.</p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="ques-icon-info3293"> <a href="#"><i class="fa fa-check" aria-hidden="true"> solved</i></a> <a href="#"><i class="fa fa-star" aria-hidden="true"> 5</i> </a> <a href="#"><i class="fa fa-folder" aria-hidden="true"> wordpress</i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 4 min ago</i></a> <a href="#"><i class="fa fa-comment" aria-hidden="true">  5 answer</i></a> <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </a> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="ques-type302">
+                                                    <a href="#">
+                                                        <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true">  333335 answer</i></button>
+                                                    </a>
+                                                    <a href="#">
+                                                        <button type="button" class="q-type23 button-ques2973"> <i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="question-type2033">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="left-user12923 left-user12923-repeat">
+                                                    <a href="#"><img src="image/images.png" alt="image"> </a> <a href="#"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="right-description893">
+                                                    <div id="que-hedder2983">
+                                                        <h3><a href="post-deatils.html" target="_blank">This is my first Question</a></h3>
+                                                    </div>
+                                                    <div class="ques-details10018">
+                                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.</p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="ques-icon-info3293"> <a href="#"><i class="fa fa-check check-color329" aria-hidden="true"> solved</i></a> <a href="#"><i class="fa fa-star" aria-hidden="true"> 5</i> </a> <a href="#"><i class="fa fa-folder" aria-hidden="true"> wordpress</i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 4 min ago</i></a> <a href="#"><i class="fa fa-comment" aria-hidden="true">  5 answer</i></a> <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </a> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="ques-type302">
+                                                    <a href="#">
+                                                        <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true">  333335 answer</i></button>
+                                                    </a>
+                                                    <a href="#">
+                                                        <button type="button" class="q-type23 button-ques2973"> <i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!--End content-3 -->
+
+
+
+                                <section id="content4">
+                                    <!--No answered Content Section -->
+                                    <div class="question-type2033">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="left-user12923 left-user12923-repeat">
+                                                    <a href="#"><img src="image/images.png" alt="image"> </a> <a href="#"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="right-description893">
+                                                    <div id="que-hedder2983">
+                                                        <h3><a href="post-deatils.html" target="_blank">This is my first Question</a></h3>
+                                                    </div>
+                                                    <div class="ques-details10018">
+                                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.</p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="ques-icon-info3293"> <a href="#"><i class="fa fa-check check-color329" aria-hidden="true"> solved</i></a> <a href="#"><i class="fa fa-star" aria-hidden="true"> 5</i> </a> <a href="#"><i class="fa fa-folder" aria-hidden="true"> wordpress</i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 4 min ago</i></a> <a href="#"><i class="fa fa-comment" aria-hidden="true">  5 answer</i></a> <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </a> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="ques-type302">
+                                                    <a href="#">
+                                                        <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true">  333335 answer</i></button>
+                                                    </a>
+                                                    <a href="#">
+                                                        <button type="button" class="q-type23 button-ques2973"> <i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End of content-4-->
+                                </section>
+
+
+                                <section id="content5">
+                                    <!--Recent Question Content Section -->
+                                    <div class="question-type2033">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="left-user12923 left-user12923-repeat">
+                                                    <a href="#"><img src="image/images.png" alt="image"> </a> <a href="#"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="right-description893">
+                                                    <div id="que-hedder2983">
+                                                        <h3><a href="post-deatils.html" target="_blank">This is my first Question</a></h3>
+                                                    </div>
+                                                    <div class="ques-details10018">
+                                                        <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis.</p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="ques-icon-info3293"> <a href="#"><i class="fa fa-star" aria-hidden="true"> 5 </i> </a> <a href="#"><i class="fa fa-folder" aria-hidden="true"> wordpress</i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> 4 min ago</i></a> <a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"> Question</i></a> <a href="#"><i class="fa fa-bug" aria-hidden="true"> Report</i></a> </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="ques-type302">
+                                                    <a href="#">
+                                                        <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true">  333335 answer</i></button>
+                                                    </a>
+                                                    <a href="#">
+                                                        <button type="button" class="q-type23 button-ques2973"> <i class="fa fa-user-circle-o" aria-hidden="true"> 70 view</i> </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--End of content-5-->
+                                </section>
+
+                            </div>
+                        </div>
+                        <!--end of col-md-9 -->
+                        <!--strart col-md-3 (side bar)-->
+                        <br />
+                        <aside class="col-md-3 sidebar97239">
+                            <div class="status-part3821">
+                                <b>Number of publication :</b>  @ViewBag.result</i></a>
+                            </div>
+                            
+                            </aside>
+                    </div>
+        </div>
+
+        </section>
+        <!--    footer -->
+        <!-- End Gallery  -->
+        <!-- Start Instagram Feed  -->
+        <!-- End Instagram Feed  -->
+        <!-- Start Footer  -->
+        <!-- End Footer  -->
+        <!-- Start copyright  -->
+
+        <div class="footer-copyright">
+
+        </div>
+        <!-- End copyright  -->
+
+        <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+
+        <script src="/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="/Scripts/popper.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+        <!-- ALL PLUGINS -->
+        <script src="/Scripts/jquery.superslides.min.js"></script>
+        <script src="/Scripts/bootstrap-select.js"></script>
+        <script src="/Scripts/inewsticker.js"></script>
+        <script src="/Scripts/bootsnav.js."></script>
+        <script src="/Scripts/images-loded.min.js"></script>
+        <script src="/Scripts/isotope.min.js"></script>
+        <script src="/Scripts/owl.carousel.min.js"></script>
+        <script src="/Scripts/baguetteBox.min.js"></script>
+        <script src="/Scripts/form-validator.min.js"></script>
+        <script src="/Scripts/contact-form-script.js"></script>
+        <script src="/Scripts/custom.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="/Scripts/jquery-3.1.1.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+        <script src="/Scripts/npm.js"></script>
+
+</body>
+
+</html>
