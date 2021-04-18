@@ -17,12 +17,13 @@ namespace Consommi_Tounsi.Models
 
 
 
-        public int? ClientFk { get; set; }
+        //public int? ClientFk { get; set; }
         public Client Client { get; set; }
-
+        /*
         public virtual ICollection<comments> comments { get; set; }
         public virtual ICollection<Vote> Vote { get; set; }
         public virtual ICollection<Vus> Vus { get; set; }
         public virtual ICollection<Rating> Rating { get; set; }
+        */
     }
 }
