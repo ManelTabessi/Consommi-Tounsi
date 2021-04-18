@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Consommi_Tounsi.Models.Delivery_Man>
+
+@{
+    ViewBag.Title = "BestLivreur";
+}
+
+<h2>BestLivreur</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phone number
+        </th>
+
+        <th>
+            state
+        </th>
+
+        <th>
+            Workload
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_deliv_man)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.name_deliv_man)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email_deliv_man)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.phone_num_deliv_man)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.etat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.chargeT_liv)
+    </td>
+
+</tr>
+}
+
+</table>
