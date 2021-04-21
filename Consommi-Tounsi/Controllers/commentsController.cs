@@ -66,8 +66,7 @@ namespace Consommi_Tounsi.Controllers
             HttpResponseMessage httpResponseMessage1 = client.GetAsync("nbrcmt/" + idpub.ToString()).Result;
             ViewBag.result = httpResponseMessage1.Content.ReadAsAsync<long>().Result;
 
-            HttpResponseMessage httpResponseMessage2 = client.GetAsync("comtplusperienents").Result;
-            ViewBag.result1 = httpResponseMessage2.Content.ReadAsAsync<IEnumerable<Vote>>().Result;
+           
 
             return View(com);
         }
