@@ -19,8 +19,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44391</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -170,6 +170,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\publicationController.cs" />
     <Compile Include="Controllers\ReclamationController.cs" />
+    <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -498,6 +499,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Vote\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
