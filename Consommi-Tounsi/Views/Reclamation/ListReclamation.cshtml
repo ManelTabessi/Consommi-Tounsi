@@ -35,26 +35,30 @@
                 </div>
                 <ul class="nav">
 
-                    <li class="active ">
+                    <div class="active ">
                         <a href="../Delivery_Man/ListLivreur">
                             <i class="tim-icons icon-single-02"></i>
-                            <p>Delivery Man</p>
-                        </a>
-                    </li>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Delivery Man</a>
 
-                    <li class="active ">
+                            <ul class="dropdown-menu">
+                                <li><a style="color:black" href="../Delivery_Man/LivreurDispo">List Delivery Man available</a></li>
+                                <li><a style="color:black" href="../Delivery_Man/LivreurNoDispo">List Delivery Man not available</a></li>
+                                <li><a style="color:black" href="../Delivery_Man/BestLivreur">Best Delivery Man</a></li>
+                            </ul>
+                        </a>
+                    </div>
+                    <div class="active ">
                         <a href="../Delivery/ListLivraison">
                             <i class="tim-icons icon-bag-16"></i>
-                            <p>Delivery</p>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow">Delivery</a>
                         </a>
-                    </li>
-
-                    <li class="active ">
+                    </div>
+                    <div class="active ">
                         <a href="../Reclamation/ListReclamation">
-                            <i class="tim-icons icon-puzzle-10"></i>
-                            <p>Reclamation</p>
+                            <i class="tim-icons icon-bag-16"></i>
+                            <a style="color:white">Reclamation</a>
                         </a>
-                    </li>
+                    </div>
 
                 </ul>
             </div>
@@ -79,7 +83,12 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto">
-                           
+                            <li class="search-bar input-group">
+                                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
+                                    <i class="tim-icons icon-zoom-split"></i>
+                                    <span class="d-lg-none d-md-block">Search</span>
+                                </button>
+                            </li>
 
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -103,7 +112,18 @@
                     </div>
                 </div>
             </nav>
-            
+            <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
@@ -153,7 +173,10 @@
                                         </td>
                                         <td>
                                             <i class="">
-                                                @Html.ActionLink("Decision", "action", new { /* id=item.PrimaryKey */ })
+                                                @Html.ActionLink("Decision", "../Decision/Index", new { id_recl = item.id_recl })
+                                            </i>
+                                            <i class="">
+                                                @Html.ActionLink("Add Decision", "../Decision/Create", new { id_recl = item.id_recl })
                                             </i>
                                         </td>
                                     </tr>

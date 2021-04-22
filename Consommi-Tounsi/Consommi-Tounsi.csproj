@@ -165,6 +165,7 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DecisionController.cs" />
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\Delivery_ManController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -485,18 +486,25 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Decision\Create.cshtml" />
+    <Content Include="Views\Decision\Index.cshtml" />
     <Content Include="Views\Delivery\Create.cshtml" />
     <Content Include="Views\Delivery\Delete.cshtml" />
+    <Content Include="Views\Delivery\DeleteAuto.cshtml" />
     <Content Include="Views\Delivery\ListLivraison.cshtml" />
     <Content Include="Views\Delivery_Man\BestLivreur.cshtml" />
+    <Content Include="Views\Delivery_Man\ChargeDeTravail.cshtml" />
     <Content Include="Views\Delivery_Man\Create.cshtml" />
     <Content Include="Views\Delivery_Man\Delete.cshtml" />
+    <Content Include="Views\Delivery_Man\Etat.cshtml" />
     <Content Include="Views\Delivery_Man\ListLivreur.cshtml" />
     <Content Include="Views\Delivery_Man\LivreurDispo.cshtml" />
     <Content Include="Views\Delivery_Man\LivreurNoDispo.cshtml" />
+    <Content Include="Views\Delivery_Man\Prime.cshtml" />
     <Content Include="Views\Reclamation\Create.cshtml" />
     <Content Include="Views\Reclamation\Delete.cshtml" />
     <Content Include="Views\Reclamation\ListReclamation.cshtml" />
+    <Content Include="Views\Reclamation\recl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

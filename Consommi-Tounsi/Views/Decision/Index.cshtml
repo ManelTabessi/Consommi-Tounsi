@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Consommi_Tounsi.Models.Decision>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_deci)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typedecision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReclamationFK)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_deci)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typedecision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reclamation.id_recl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

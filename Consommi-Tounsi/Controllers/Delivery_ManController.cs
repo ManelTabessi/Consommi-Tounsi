@@ -94,18 +94,11 @@ namespace Consommi_Tounsi.Controllers
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:8089");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/BestLivreur").Result;
+            HttpResponseMessage httpResponseMessage1 = client.GetAsync("SpringMVC/servlet/BestLivreur").Result;
 
-            IEnumerable<Delivery_Man> delivm;
-            if (httpResponseMessage.IsSuccessStatusCode)
-            {
-                delivm = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Delivery_Man>>().Result;
-            }
-            else
-            {
-                delivm = null;
-            }
-            return View(delivm);
+            ViewBag.result = httpResponseMessage1.Content.ReadAsAsync<int>().Result;
+
+            return View();
         }
 
         // GET: Delivery_Man/Details/5
@@ -191,8 +184,92 @@ namespace Consommi_Tounsi.Controllers
             return View();
         }
 
+        // GET: Delivery_Man/Prime
+        public ActionResult Prime()
+        {
+            return View();
+        }
 
-        
+        // POST: Delivery_Man/Prime
+        [HttpPost]
+        public ActionResult Prime( Delivery_Man deliv)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Delivery_Man>("Prime/", deliv);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("BestLivreur");
+                }
+            }
+            return View();
+        }
+
+        // GET: Delivery_Man/ChargeDeTravail
+        public ActionResult ChargeDeTravail(int id_deliv_man)
+        {
+            return View();
+        }
+
+        // POST: Delivery_Man/ChargeDeTravail
+        [HttpPost]
+        public ActionResult ChargeDeTravail(int id_deliv_man , Delivery_Man deliv)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Delivery_Man>("ChargeDeTravail/" + id_deliv_man.ToString(), deliv);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("ListLivreur");
+                }
+            }
+            return View();
+        }
+
+        // GET: Delivery_Man/Etat
+        public ActionResult Etat()
+        {
+            return View();
+        }
+
+        // POST: Delivery_Man/Etat
+        [HttpPost]
+        public ActionResult Etat(int id_deliv_man, Boolean etat, Delivery_Man deliv)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Delivery_Man>("mettreAjourLivreurBydispo/" + id_deliv_man.ToString() + etat.ToString(), deliv);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("ListLivreur");
+                }
+            }
+            return View();
+        }
+
+
+
     }
     
 }

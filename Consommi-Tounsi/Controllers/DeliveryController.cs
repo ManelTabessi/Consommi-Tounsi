@@ -177,5 +177,33 @@ namespace Consommi_Tounsi.Controllers
             return View();       
         }
 
+
+        // GET: Delivery/Delete/5
+        public ActionResult DeleteAuto()
+        {
+            return View();
+        }
+
+        // POST: Delivery/Delete/5
+        [HttpPost]
+        public ActionResult DeleteAuto(FormCollection collection)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+
+                //HTTP POST
+                var putTask = client.DeleteAsync("dedeleteDileveryAutolete/");
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("ListLivraison");
+                }
+            }
+            return View();
+        }
     }
 }
