@@ -3,15 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Consommi_Tounsi.Models;
+using System.Threading.Tasks;
 
 namespace Consommi_Tounsi.Controllers
 {
     public class DecisionController : Controller
     {
         // GET: Decision
-        public ActionResult Index()
+        public ActionResult ListDecision(int id_recl)
         {
-            return View();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:8089");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/afficherlesDecisions/" + id_recl.ToString()).Result;
+
+            IEnumerable<Decision> dec;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                dec = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Decision>>().Result;
+            }
+            else
+            {
+                dec = null;
+            }
+            return View(dec);
         }
 
         // GET: Decision/Details/5
@@ -28,18 +46,23 @@ namespace Consommi_Tounsi.Controllers
 
         // POST: Decision/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(Decision dec, int id_recl)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            string Baseurl = "http://localhost:8089/SpringMVC/servlet/";
 
-                return RedirectToAction("Index");
-            }
-            catch
+            using (var d = new HttpClient())
             {
-                return View();
+                d.BaseAddress = new Uri(Baseurl);
+                d.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                // client.DefaultRequestHeaders.Add("X-Miva-API-Authorization", "MIVA xxxxxxxxxxxxxxxxxxxxxx");
+                var response = await d.PostAsJsonAsync("saveDecision/" + id_recl.ToString(), dec);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("../Reclamation/ListReclamation");
+                }
             }
+            return View(dec);
         }
 
         // GET: Decision/Edit/5
@@ -65,25 +88,59 @@ namespace Consommi_Tounsi.Controllers
         }
 
         // GET: Decision/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id_deci)
         {
             return View();
         }
 
         // POST: Decision/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id_deci, FormCollection collection)
         {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add delete logic here
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
 
-                return RedirectToAction("Index");
+                //HTTP POST
+                var putTask = client.DeleteAsync("deleteDecision/" + id_deci.ToString());
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("../Reclamation/ListReclamation");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
+
+        // GET: Decision/affecterDecisionAReclamation/5
+        public ActionResult affecterDecisionAReclamation(int id_deci)
+        {
+            return View();
+        }
+
+        // POST: Decision/affecterDecisionAReclamation/5
+        [HttpPost]
+        public ActionResult affecterDecisionAReclamation(Decision deci, int id_deci, int id_client)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Decision>("affecterDecisionAReclamation/" + id_client.ToString() + "/" + id_deci.ToString(), deci);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("../Reclamation/ListReclamation");
+                }
+            }
+            return View();
+        }
+
     }
 }
