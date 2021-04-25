@@ -10,5 +10,6 @@ namespace Consommi_Tounsi.Models
         public int id_ord { get; set; }
         public DateTime date_order { get; set; }
         public virtual ICollection<Delivery> delivery { get; set; }
+
     }
 }

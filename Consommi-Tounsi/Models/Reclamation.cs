@@ -12,5 +12,6 @@ namespace Consommi_Tounsi.Models
         public String content { get; set; }
         public int? ClientFk { get; set; }
         public Client Client { get; set; }
+        public virtual Decision decision { get; set; }
     }
 }

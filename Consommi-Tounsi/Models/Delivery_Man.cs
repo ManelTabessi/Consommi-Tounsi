@@ -15,5 +15,6 @@ namespace Consommi_Tounsi.Models
         public int phone_num_deliv_man { get; set; }
         public Administrator administrator { get; set; }
         public virtual ICollection<Delivery> delivery { get; set; }
+
     }
 }

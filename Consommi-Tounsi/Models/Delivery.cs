@@ -19,6 +19,5 @@ namespace Consommi_Tounsi.Models
         public Delivery_Man Delivery_Man { get; set; }
         public int? OrderFK { get; set; }
         public Order order { get; set; }
-       
     }
 }
