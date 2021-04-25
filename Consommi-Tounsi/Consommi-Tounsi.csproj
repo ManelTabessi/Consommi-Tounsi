@@ -168,6 +168,7 @@
     <Compile Include="Controllers\DecisionController.cs" />
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\Delivery_ManController.cs" />
+    <Compile Include="Controllers\FacturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\publicationController.cs" />
     <Compile Include="Controllers\ReclamationController.cs" />
@@ -504,6 +505,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Factures\" />
     <Folder Include="Views\Vote\" />
   </ItemGroup>
   <ItemGroup>
