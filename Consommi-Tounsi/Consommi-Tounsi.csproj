@@ -500,6 +500,25 @@
     <Content Include="Views\Decision\Create.cshtml" />
     <Content Include="Views\Decision\Delete.cshtml" />
     <Content Include="Views\Decision\ListDecision.cshtml" />
+    <Content Include="Views\Reclamation\Create.cshtml" />
+    <Content Include="Views\Reclamation\Delete.cshtml" />
+    <Content Include="Views\Reclamation\ListReclamation.cshtml" />
+    <Content Include="Views\Reclamation\recl.cshtml" />
+    <Content Include="Views\Delivery\affecterLivraisonALivreur.cshtml" />
+    <Content Include="Views\Delivery\CalculFrais.cshtml" />
+    <Content Include="Views\Delivery\Create.cshtml" />
+    <Content Include="Views\Delivery\Delete.cshtml" />
+    <Content Include="Views\Delivery\DeleteAuto.cshtml" />
+    <Content Include="Views\Delivery\ListLivraison.cshtml" />
+    <Content Include="Views\Delivery_Man\BestLivreur.cshtml" />
+    <Content Include="Views\Delivery_Man\ChargeDeTravail.cshtml" />
+    <Content Include="Views\Delivery_Man\Create.cshtml" />
+    <Content Include="Views\Delivery_Man\Delete.cshtml" />
+    <Content Include="Views\Delivery_Man\Etat.cshtml" />
+    <Content Include="Views\Delivery_Man\ListLivreur.cshtml" />
+    <Content Include="Views\Delivery_Man\LivreurDispo.cshtml" />
+    <Content Include="Views\Delivery_Man\LivreurNoDispo.cshtml" />
+    <Content Include="Views\Delivery_Man\Prime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

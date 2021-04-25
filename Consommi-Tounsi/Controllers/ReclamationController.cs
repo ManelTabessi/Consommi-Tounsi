@@ -114,7 +114,11 @@ namespace Consommi_Tounsi.Controllers
                 }
             }
             return View();
-            
+        }
+
+        public ActionResult recl()
+        {
+            return View();
         }
     }
 }

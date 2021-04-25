@@ -20,9 +20,9 @@ namespace Consommi_Tounsi.Controllers
             client.BaseAddress = new Uri("http://localhost:8089");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/findAllDeli").Result;
-            
+
             IEnumerable<Delivery> deliv;
-            if(httpResponseMessage.IsSuccessStatusCode)
+            if (httpResponseMessage.IsSuccessStatusCode)
             {
                 deliv = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Delivery>>().Result;
             }
@@ -33,12 +33,14 @@ namespace Consommi_Tounsi.Controllers
             return View(deliv);
         }
 
-        public ActionResult RechercheLivraisonParLivreur()
+
+        [HttpPost]
+        public ActionResult ListLivraison(DateTime dated, DateTime datef)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:8089");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/afficherleslivraison/1").Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/afficheDispo/" + dated.ToString() + "/" + datef.ToString()).Result;
 
             IEnumerable<Delivery> deliv;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -50,53 +52,6 @@ namespace Consommi_Tounsi.Controllers
                 deliv = null;
             }
             return View(deliv);
-        }
-
-        [HttpPost]
-        public ActionResult ListLivraison(int id_deliv)
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("/SpringMVC/servlet/searchDeliveryById/"+id_deliv).Result;
-
-            IEnumerable<Delivery> deliv;
-            if (httpResponseMessage.IsSuccessStatusCode)
-            {
-                deliv = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Delivery>>().Result;
-            }
-            else
-            {
-                deliv = null;
-            }
-            return View(deliv);
-        }
-
-        [HttpPost]
-        public ActionResult DispoParDate(DateTime date_debut , DateTime date_fin)
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("afficheDispo/"+date_debut+"/"+date_fin).Result;
-
-            IEnumerable<Delivery> deliv;
-            if (httpResponseMessage.IsSuccessStatusCode)
-            {
-                deliv = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Delivery>>().Result;
-            }
-            else
-            {
-                deliv = null;
-            }
-            return View(deliv);
-        }
-
-
-        // GET: Delivery/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // GET: Delivery/Create
@@ -109,7 +64,7 @@ namespace Consommi_Tounsi.Controllers
         // POST: Delivery/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Delivery del, int id_deliv_man, int id_ord)
+        public async Task<ActionResult> Create(Delivery del, int id_deliv_man)
         {
             string Baseurl = "http://localhost:8089/SpringMVC/servlet/";
 
@@ -174,8 +129,65 @@ namespace Consommi_Tounsi.Controllers
                     return RedirectToAction("ListLivraison");
                 }
             }
-            return View();       
+            return View();
         }
+
+
+        // GET: Delivery/Delete/5
+        public ActionResult DeleteAuto()
+        {
+            return View();
+        }
+
+        // POST: Delivery/Delete/5
+        [HttpPost]
+        public ActionResult DeleteAuto(FormCollection collection)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+
+                //HTTP POST
+                var putTask = client.DeleteAsync("dedeleteDileveryAutolete/");
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("ListLivraison");
+                }
+            }
+            return View();
+        }
+
+        // GET: Delivery_Man/affecterLivraisonALivreur
+        public ActionResult affecterLivraisonALivreur()
+        {
+            return View();
+        }
+
+        // POST: Delivery_Man/affecterLivraisonALivreur
+        [HttpPost]
+        public ActionResult affecterLivraisonALivreur(Delivery deliv, int id_deliv_man, int id_deliv)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Delivery>("affecterLivraisonALivreur/" + id_deliv.ToString() + "/" + id_deliv_man.ToString(), deliv);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ListLivraison");
+                }
+            }
+            return View();
+        }
+
 
     }
 }
