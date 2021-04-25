@@ -40,7 +40,7 @@
     <div class="main-top">
         <div class="container-fluid">
             <div class="row">
-
+                
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-left:600px">
                     <div class="login-box">
                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
@@ -48,7 +48,7 @@
                             <option>Sign In</option>
                         </select>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@
                 </div>
                 <!-- End Atribute Navigation -->
             </div>
-
+            
         </nav>
         <!-- End Navigation -->
     </header>
@@ -120,10 +120,11 @@
         </div>
     </div>
     <!-- End Top Search -->
+    <!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-center">
-                <img src="/Content/img/drapeau.png" alt="">
+                <img src="/Content/img/banner-01.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -134,9 +135,9 @@
                     </div>
                 </div>
             </li>
-
+            
             <li class="text-center">
-                <img src="/Content/img/drapeau1.jpg" alt="">
+                <img src="/Content/img/banner-03.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -153,54 +154,26 @@
             <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
         </div>
     </div>
-    <br>
-    @model Consommi_Tounsi.Models.Reclamation
-
-    @{
-        ViewBag.Title = "Create";
-    }
-    <section class="login-block">
-        <div style="margin-left:550px">
-            <h2>Create Reclamation</h2>
-        </div>
-
+    <!-- End Slider -->
+    
+    <div class="box-add-products">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 login-sec" style="margin-left:400px ; background-color:burlywood">
-                    @using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="login-form">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1" class="text-uppercase">Object</label>
-                                @Html.EditorFor(model => model.objet, new { htmlAttributes = new { @class = "form-control" } })
-                            </div>
-
-                            <div class="form-group">
-                                <label for="text" class="text-body">Content</label>
-                                @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
-                            </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputPassword1" class="text-uppercase">Id Client</label>
-                                @Html.EditorFor(model => model.ClientFk, new { htmlAttributes = new { @class = "form-control" } })
-                            </div>
-
-                            <div class="form-check">
-
-                                <button type="submit" class="btn btn-login float-right">Create</button>
-                            </div>
-                        </div>
-                    }
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="offer-box-products">
+                        <img class="img-fluid" src="/Content/img/add-img-01.jpg" alt="" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="offer-box-products">
+                        <img class="img-fluid" src="/Content/img/add-img-02.jpg" alt="" />
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <br>
-    <br>
+    
     <!-- Start Footer  -->
     <footer>
         <div class="footer-main">
@@ -216,7 +189,7 @@
                             </ul>
                         </div>
                     </div>
-
+                    
                     <div class="footer-link-contact">
                         <h4>Contact Us</h4>
                         <ul>
@@ -232,7 +205,7 @@
                         </ul>
                     </div>
                 </div>
-
+               
             </div>
         </div>
     </footer>

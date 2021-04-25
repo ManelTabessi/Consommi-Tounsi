@@ -26,37 +26,37 @@
             -->
             <div class="sidebar-wrapper ">
                 <div class="logo">
-                    <a href="javascript:void(0)" class="simple-text logo-mini">
-                        
-                    </a>
+                    <a href="javascript:void(0)" class="simple-text logo-mini"></a>
                     <a href="javascript:void(0)" class="simple-text logo-normal">
                         Admin
                     </a>
                 </div>
-                <ul class="nav">
-
-                    <li class="active ">
+                <div class="nav">
+                    <div class="active ">
                         <a href="../Delivery_Man/ListLivreur">
                             <i class="tim-icons icon-single-02"></i>
-                            <p>Delivery Man</p>
-                        </a>
-                    </li>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Delivery Man</a>
 
-                    <li class="active ">
+                            <ul class="dropdown-menu">
+                                <li><a style="color:black" href="../Delivery_Man/LivreurDispo">List Delivery Man available</a></li>
+                                <li><a style="color:black" href="../Delivery_Man/LivreurNoDispo">List Delivery Man not available</a></li>
+                                <li><a style="color:black" href="../Delivery_Man/BestLivreur">Best Delivery Man</a></li>
+                            </ul>
+                        </a>
+                    </div>
+                    <div class="active ">
                         <a href="../Delivery/ListLivraison">
-                            <i class="tim-icons icon-bag-16"></i>
-                            <p>Delivery</p>
+                            <i class="tim-icons icon-delivery-fast"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow">Delivery</a>
                         </a>
-                    </li>
-
-                    <li class="active ">
+                    </div>
+                    <div class="active ">
                         <a href="../Reclamation/ListReclamation">
-                            <i class="tim-icons icon-puzzle-10"></i>
-                            <p>Reclamation</p>
+                            <i class="tim-icons icon-alert-circle-exc"></i>
+                            <a style="color:white">Reclamation</a>
                         </a>
-                    </li>
-
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="main-panel">
@@ -79,8 +79,6 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto">
-                            
-                            
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <div class="photo">
@@ -103,129 +101,113 @@
                     </div>
                 </div>
             </nav>
-            <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <i class="tim-icons icon-simple-remove"></i>
-                            </button>
+
+            @model IEnumerable<Consommi_Tounsi.Models.Delivery_Man>
+
+            @{
+                ViewBag.Title = "ListLivreur";
+            }
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card ">
+                            <div class="card-header">
+                                <h2 class="card-title" style="margin-left:300px"> List Delivery Man</h2>
+                            </div>
+                            <div class="container" style="margin-left:600px">
+                                <div>
+                                    @Html.TextBox("id_deliv_man")
+
+                                    <button class="tim-icons icon-zoom-split" type="submit" value="Search" id="submit" style="margin-left:5px"></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <br>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <i class="tim-icons icon-simple-add">
+                                                    @Html.ActionLink("Create New", "Create")
+                                                </i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <table class="table tablesorter " id="">
+                                    <tr>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <th>
+                                            Phone number
+                                        </th>
+                                        <th>
+                                            State
+                                        </th>
+                                        <th>
+                                            Workload
+                                        </th>
+                                    </tr>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.id_deliv_man)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.name_deliv_man)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.email_deliv_man)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.phone_num_deliv_man)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.etat)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.chargeT_liv)
+                                            </td>
+
+                                            <td>
+                                                <i class="tim-icons icon-pencil">
+                                                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                                                </i>
+                                                <i class="tim-icons icon-trash-simple">
+                                                    @Html.ActionLink("Delete", "Delete", new { id_deliv_man = item.id_deliv_man })
+                                                </i>
+                                                <i class="tim-icons icon-delivery-fast">
+                                                    @Html.ActionLink("Affect a delivery", "../Delivery/Create", new { id_deliv_man = item.id_deliv_man })
+                                                </i>
+                                                <i class="tim-icons icon-simple-add">
+                                                    @Html.ActionLink("Workload", "ChargeDeTravail", new { id_deliv_man = item.id_deliv_man })
+                                                </i>
+                                                <i class="tim-icons icon-single-02">
+                                                    @Html.ActionLink("State", "Etat", new { id_deliv_man = item.id_deliv_man, etat = item.etat })
+                                                </i>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
-
-                <div class="content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card ">
-                                <div class="card-header">
-                                    <h2 class="card-title"style="margin-left:300px"> List Delivery Man</h2>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-
-                                        @model IEnumerable<Consommi_Tounsi.Models.Delivery_Man>
-
-                                        @{
-                                            ViewBag.Title = "ListLivreur";
-                                        }
-                                        <div class="container" style="margin-left:600px">
-                                            <div>
-                                                @Html.TextBox("id_deliv_man")
-
-                                                <button class="tim-icons icon-zoom-split" type="submit" value="Search" id="submit" style="margin-left:5px"></button>
-                                            </div>
-                                        </div>
-
-                                        <div style="margin-top:10px"></div>
-
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    @Html.ActionLink("Create New", "Create")
-                                                </div>
-                                                <div class="col-lg-4" style="margin-left:300px">
-                                                    @Html.ActionLink("List Delivery Man Disponible", "LivreurDispo")
-                                                </div>
-                                            </div>
-                                            <div style="margin-left:600px">
-                                                @Html.ActionLink("List Delivery Man Non Disponible", "LivreurNoDispo")
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                            <table class="table tablesorter " id="">
-                                                <tr>
-                                                    <th>
-                                                        Id
-                                                    </th>
-                                                    <th>
-                                                        Name
-                                                    </th>
-                                                    <th>
-                                                        Email
-                                                    </th>
-                                                    <th>
-                                                        Phone number
-                                                    </th>
-                                                    <th>
-                                                        State
-                                                    </th>
-                                                    <th>
-                                                        Workload
-                                                    </th>
-                                                </tr>
-
-                                                @foreach (var item in Model)
-                                                {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.id_deliv_man)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.name_deliv_man)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.email_deliv_man)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.phone_num_deliv_man)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.chargeT_liv)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.etat)
-                                                </td>
-                                                <td>
-                                                    <i class="tim-icons icon-pencil">
-                                                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
-                                                    </i>
-                                                    <i class="tim-icons icon-trash-simple">
-                                                        @Html.ActionLink("Delete", "Delete", new { id_deliv_man = item.id_deliv_man })
-                                                    </i>
-                                                    <i class="tim-icons icon-trash-simple">
-                                                        @Html.ActionLink("Affect a delivery", "../Delivery/Create", new { id_deliv_man = item.id_deliv_man } )
-                                                    </i>
-                                                </td>
-                                            </tr>
-                                                }
-
-                                            </table>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-
             <footer class="footer">
                 <div class="container-fluid">
-                    
+
                     <div class="copyright" style="margin-right:400px">
                         made with <i class="tim-icons icon-heart-2"></i> by
                         <a href="javascript:void(0)" target="_blank">Consommi Tounsi</a>.
@@ -234,32 +216,32 @@
             </footer>
         </div>
     </div>
-                                <div class="fixed-plugin">
-                                    <div class="dropdown show-dropdown">
-                                        <a href="#" data-toggle="dropdown">
-                                            <i class="tim-icons icon-settings-gear-63"> </i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li class="header-title"> Sidebar Background</li>
-                                            <li class="adjustments-line">
-                                                <a href="javascript:void(0)" class="switch-trigger background-color">
-                                                    <div class="badge-colors text-center">
-                                                        <span class="badge filter badge-primary active" data-color="primary"></span>
-                                                        <span class="badge filter badge-info" data-color="blue"></span>
-                                                        <span class="badge filter badge-success" data-color="green"></span>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                </a>
-                                            </li>
-                                            <li class="adjustments-line text-center color-change">
-                                                <span class="color-label">LIGHT MODE</span>
-                                                <span class="badge light-badge mr-2"></span>
-                                                <span class="badge dark-badge ml-2"></span>
-                                                <span class="color-label">DARK MODE</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                 <div class="fixed-plugin">
+                        <div class="dropdown show-dropdown">
+                               <a href="#" data-toggle="dropdown">
+                                 <i class="tim-icons icon-settings-gear-63"> </i>
+                               </a>
+                             <ul class="dropdown-menu">
+                                <li class="header-title"> Sidebar Background</li>
+                                   <li class="adjustments-line">
+                                         <a href="javascript:void(0)" class="switch-trigger background-color">
+                                              <div class="badge-colors text-center">
+                                                  <span class="badge filter badge-primary active" data-color="primary"></span>
+                                                  <span class="badge filter badge-info" data-color="blue"></span>
+                                                  <span class="badge filter badge-success" data-color="green"></span>
+                                              </div>
+                                              <div class="clearfix"></div>
+                                         </a>
+                                   </li>
+                                   <li class="adjustments-line text-center color-change">
+                                          <span class="color-label">LIGHT MODE</span>
+                                          <span class="badge light-badge mr-2"></span>
+                                          <span class="badge dark-badge ml-2"></span>
+                                          <span class="color-label">DARK MODE</span>
+                                   </li>
+                             </ul>
+                        </div>
+                 </div>
                                 <!--   Core JS Files   -->
                                 <script src="/Scripts/core/jquery.min.js"></script>
                                 <script src="/Scripts/core/popper.min.js"></script>

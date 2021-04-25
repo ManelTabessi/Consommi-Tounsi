@@ -165,6 +165,7 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DecisionController.cs" />
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\Delivery_ManController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -495,6 +496,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Decision\affecterDecisionAReclamation.cshtml" />
+    <Content Include="Views\Decision\Create.cshtml" />
+    <Content Include="Views\Decision\Delete.cshtml" />
+    <Content Include="Views\Decision\ListDecision.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
