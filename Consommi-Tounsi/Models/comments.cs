@@ -15,5 +15,5 @@ namespace Consommi_Tounsi.Models
         public Client Client { get; set; }
         public ISet<Vote> Vote { get; set; }
     }
-}
+
 }

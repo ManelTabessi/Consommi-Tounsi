@@ -7,7 +7,7 @@ namespace Consommi_Tounsi.Models
 {
     public class Client
     {
-        public int id_client { get; set; }
+       public int id_client { get; set; }
         public String name_client { get; set; }
         public int phone_num_client { get; set; }
         public String email_client { get; set; }
