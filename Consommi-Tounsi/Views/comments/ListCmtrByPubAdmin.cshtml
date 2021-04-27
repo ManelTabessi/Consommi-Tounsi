@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Consommi_Tounsi.Models.publication>
+﻿@model IEnumerable<Consommi_Tounsi.Models.comments>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,6 @@
         Black Dashboard by Creative Tim
     </title>
     <!--     Fonts and icons     -->
-   
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- Nucleo Icons -->
@@ -21,7 +20,12 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="/Content/demo.css" rel="stylesheet" />
 </head>
-
+<style>
+    a {
+        color: #ccbdd5;
+        font-weight: 300;
+    }
+</style>
 <body class="">
     <div class="wrapper">
         <div class="sidebar">
@@ -31,22 +35,21 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="javascript:void(0)" class="simple-text logo-mini">
-                        CT
+                      
                     </a>
                     <a href="javascript:void(0)" class="simple-text logo-normal">
                         Consommi Tounsi
                     </a>
                 </div>
                 <ul class="nav">
-
                     <div class="active ">
-                        <a href="IndexAdmin">
+                        <a href="../publication/IndexAdmin">
                             <i class="tim-icons icon-time-alarm"></i>
                             <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Publication waiting</a>
                         </a>
                     </div>
                     <div class="active ">
-                        <a href="IndexAdminaccepted">
+                        <a href="../publciation/IndexAdminaccepted">
                             <i class="tim-icons icon-check-2"></i>
                             <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Publication accepted</a>
                         </a>
@@ -69,7 +72,6 @@
                             <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Reclamation</a>
                         </a>
                     </div>
-
 
                 </ul>
             </div>
@@ -151,56 +153,38 @@
                     </div>
                 </div>
             </div>
-            @{
-                ViewBag.Title = "IndexAdmin";
-            }
-
-          
+           </td>
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card ">
 
-
-                            <div class="card-header">
-                                <h4 class="card-title"></h4>
+                            <div class="col-sm-6">
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                                        <input type="radio" name="options" checked="">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"> Nombre de Commentaires : @ViewBag.result
+                                        <span class="d-block d-sm-none">
+                                            <i class="tim-icons icon-single-02"></i>
+                                        </span>
+                                    </label>
+                                    
+                                </div>
                             </div>
-                            @using (Html.BeginForm())
-                            {
-
-                                <table>
-                                    <tr>
-                                        <td>
-
-
-                                            <div>
-                                                <i class="tim-icons icon-zoom-split"></i>   Search by subject: @Html.TextBox("subject")
-
-                                            </div>
-
-                                        </td>
-                                        <td> <input type="submit" value="Search" id="submit" class="btn btn-fill btn-primary" /></td>
-                                    </tr>
-                                </table>
-                            }
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table tablesorter " class="table">
                                         <thead class=" text-primary">
                                             <tr>
                                                 <th>
-                                                    @Html.DisplayNameFor(model => model.Client.username)
+                                                    Username
                                                 </th>
                                                 <th>
-                                                    @Html.DisplayNameFor(model => model.subject)
+                                                    Contents
                                                 </th>
                                                 <th>
-                                                    @Html.DisplayNameFor(model => model.contents)
+                                                    Date
                                                 </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.date_discussion)
-                                                </th>
-
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -211,29 +195,18 @@
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.Client.username)
                                                     </td>
-
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.subject)
-                                                    </td>
                                                     <td>
                                                         @Html.DisplayFor(modelItem => item.contents)
                                                     </td>
                                                     <td>
-                                                        @Html.DisplayFor(modelItem => item.date_discussion)
+                                                        @Html.DisplayFor(modelItem => item.dateComment)
                                                     </td>
-
                                                     <td>
-
-                                                        @Html.ActionLink("Accepter", "Accepter", new { idpub = item.idpub }) |
-                                                        @Html.ActionLink("Refuser", "Refuser", new { idpub = item.idpub }) |
-                                                        @Html.ActionLink("Delete", "DeletepubAdmin", new { idpub = item.idpub })
-
                                                     </td>
                                                 </tr>
                                             }
                                         </tbody>
                                     </table>
-
                                     <div class="fixed-plugin">
                                         <div class="dropdown show-dropdown">
                                             <a href="#" data-toggle="dropdown">
@@ -274,69 +247,20 @@
                                             </ul>
                                         </div>
                                     </div>
-
-                                    <style>
-                                        .bouton {
-                                            background-color: #008000;
-                                        }
-                                        .pagination {
-                                            display: inline-block;
-                                            padding-left: 0;
-                                            margin: 20px 0;
-                                            border-radius: 4px;
-                                        }
-
-                                            .pagination > li:first-child > a, .pagination > li:first-child > span {
-                                                margin-left: 0;
-                                                border-top-left-radius: 4px;
-                                                border-bottom-left-radius: 4px;
-                                            }
-
-                                            .pagination > li > a, .pagination > li > span {
-                                                position: relative;
-                                                float: left;
-                                                padding: 6px 12px;
-                                                margin-left: -1px;
-                                                line-height: 1.42857143;
-                                                color: #337ab7;
-                                                text-decoration: none;
-                                                background-color: #fff;
-                                                border: 1px solid #ddd;
-                                            }
-
-                                            .pagination > li {
-                                                display: inline;
-                                            }
-                                    </style>  
-                                    <nav aria-label="Page navigation">
-                                        <ul class="pagination">
-                                            <li>
-                                                <a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a>
-                                            </li>
-                                            <li><a href="IndexAdmin">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li>
-                                                <a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                    <!-- Core JS Files -->
+                                    <!--   Core JS Files   -->
                                     <script src="/Scripts/core/jquery.min.js"></script>
                                     <script src="/Scripts/core/popper.min.js"></script>
                                     <script src="/Scripts/core/bootstrap.min.js"></script>
                                     <script src="/Scripts/plugins/perfect-scrollbar.jquery.min.js"></script>
-                                    <!-- Google Maps Plugin -->
+                                    <!--  Google Maps Plugin    -->
                                     <!-- Place this tag in your head or just before your close body tag. -->
                                     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
                                     <!-- Chart JS -->
                                     <script src="/Scripts/plugins/chartjs.min.js"></script>
-                                    <!-- Notifications Plugin -->
+                                    <!--  Notifications Plugin    -->
                                     <script src="/Scripts/plugins/bootstrap-notify.js"></script>
                                     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-                                    <script src="/Scripts/black-dashboard.min.js?v=1.0.0"></script> <!-- Black Dashboard DEMO methods, don't include it in your project! -->
+                                    <script src="/Scripts/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
                                     <script src="/Scripts/demo.js"></script>
                                     <script>
                                         $(document).ready(function () {
@@ -447,13 +371,14 @@
                                                     $('body').removeClass('white-content');
                                                 });
                                             });
-                                        });
-                                    </script>
+                                        });</script>
                                     <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
                                     <script>
-                                        window.TrackJS && TrackJS.install({
-                                            token: "ee6fab19c5a04ac1a32a645abde4613a",
-                                            application: "black-dashboard-free"
-                                        });
-                                    </script>
-</body> </html>
+                                        window.TrackJS &&
+                                            TrackJS.install({
+                                                token: "ee6fab19c5a04ac1a32a645abde4613a",
+                                                application: "black-dashboard-free"
+                                            });</script>
+</body>
+
+</html>

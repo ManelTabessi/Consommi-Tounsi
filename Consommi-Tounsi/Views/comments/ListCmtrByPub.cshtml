@@ -1,6 +1,7 @@
-﻿@model IEnumerable<Consommi_Tounsi.Models.publication>
+﻿@model IEnumerable<Consommi_Tounsi.Models.comments>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ListCmtrByPub";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -44,9 +45,7 @@
 
 </head>
 <style>
-    .ques-icon-info3293 .fa-star {
-        color: #29bbea;
-    }
+
     .attr-nav > ul > li > a {
         color: #d32c2c;
         display: block;
@@ -81,8 +80,7 @@
             /* border-radius: 0px; */
             float: right;
         }
-
-    .q-type238 {
+    .q-type23 {
         margin-top: 23px;
         background-color: #29bbea;
         font-size: 10px;
@@ -90,8 +88,7 @@
         border-color: black;
         border: dotted;
         color: #fff;
-
-       
+        color: #fff;
     }
     .pagination {
         display: inline-block;
@@ -99,11 +96,13 @@
         margin: 20px 0;
         border-radius: 4px;
     }
+
         .pagination > li:first-child > a, .pagination > li:first-child > span {
             margin-left: 0;
             border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
         }
+
         .pagination > li > a, .pagination > li > span {
             position: relative;
             float: left;
@@ -115,9 +114,21 @@
             background-color: #fff;
             border: 1px solid #ddd;
         }
+
         .pagination > li {
             display: inline;
         }
+    
+    #main > input:checked + label {
+        color: #555;
+        border: 1px solid #29bbea;
+        /* border-top: 2px solid #FF7361; */
+        /* border-bottom: 1px solid #FF7361; */
+        background-color: #fdfdfd;
+    }
+    #main > label[for*='1']:before {
+    content: '\f1cb';
+}
 </style>
 <body>
 
@@ -173,9 +184,8 @@
                         <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
 
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">FORUM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../publication/index">FORUM</a></li>
                         <li class="nav-item"><a class="nav-link" href="gallery.html">RECLAMATION</a></li>
-
                         <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
                     </ul>
                 </div>
@@ -243,19 +253,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <ul class="breadcrumb">
-                        <a href="/publication/Create" style="color:red">ADD PUBLICATION</a>
-                        <li class="breadcrumb-item active" style="color:red"> </li>
-
-
-                    </ul>
+                   
                 </div>
             </div>
         </div>
     </div>
     <!-- End All Title Box -->
     <!-- Start Gallery  -->
-    
+
     <div class="products-box">
         <div class="container">
             <div class="row">
@@ -265,35 +270,9 @@
 
                     </div>
                 </div>
-                @using (Html.BeginForm())
-                {
 
-                    <table>
-
-
-
-                        <tr>
-                            <td>
-                                <div>
-                                    <div class="footer-search" id="custom-search-input">
-                                        <div class="input-group col-md-12">
-
-                                            <span class="input-group-btn">
-
-                                                <i class="tim-icons icon-zoom-split"></i> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>  <input type="text" class="  search-query form-control user-control30" placeholder="Search here...." @Html.TextBox("subject")></input>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <center><td> <input type="submit" value="Search" id="submit" class="btn btn-fill btn-primary" style="background-color:red;border:ridge;border-color:red" /></td>
-
-                        </tr>
-
-                    </table>
-                }
                 <div class="col-lg-12">
                     <div class="title-all text-center">
-                        <h1>Publication</h1>
 
                     </div>
                 </div>
@@ -304,15 +283,13 @@
                 </div>
             </div>
 
-
+            
             <!-- ======content section/body=====-->
             <section class="main-content920">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9">
                             <div id="main">
-
-
 
 
                                 @foreach (var item in Model)
@@ -332,62 +309,52 @@
                                                 <div class="col-md-9">
                                                     <div class="right-description893">
                                                         <div id="que-hedder2983">
-                                                            <h3><a href="post-deatils.html" target="_blank"> @Html.DisplayFor(modelItem => item.subject)</a></h3>
+
                                                         </div>
                                                         <div class="ques-details10018">
                                                             <p>  @Html.DisplayFor(modelItem => item.contents)</p>
                                                         </div>
                                                         <hr>
+                                                        <style>
+                                                            a {
+                                                                color: #ffffff;
+                                                                text-decoration: none;
+                                                                outline: none;
+                                                            }
+                                                        </style>
+
                                                         <div class="ques-icon-info3293">
-                                                          
-                                                            <a href="#"><i class="fa fa-star" aria-hidden="true">   @Html.DisplayFor(modelItem => item.rating)</i>  </a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true">   @Html.DisplayFor(modelItem => item.date_discussion)</i></a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i aria-hidden="true"> </i></a>
+                                                            <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true">   @Html.DisplayFor(modelItem => item.dateComment)</i></a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i aria-hidden="true"> </i></a>
+
                                                             <a href="#" style="color:white">
-                                                                <img src="~/Content/img/Like.png" width="20px" /> @Html.ActionLink(",", "../Vote/Addlike", new { idpub = item.idpub })
-                                                            </a>
-                                                            <i></i>
-                                                            <style>
-                                                                a {
-                                                                    color: #ffffff;
-                                                                    text-decoration: none;
-                                                                    outline: none;
-                                                                }
-                                                            </style>
+                                                                <img src="~/Content/img/Like.png" width="20px" /> @Html.ActionLink(",", "../Vote/Addlikebycmt", new { idcomment = item.idcomment })
+                                                            </a><i></i><i></i>
                                                             <a href="#">
-                                                                <img src="~/Content/img/dislike.png" width="20px" style="margin-top:8px" /> @Html.ActionLink(",", "../Vote/AddDislike", new { idpub = item.idpub })
-                                                            </a> <i></i><i></i>
+                                                                <img src="~/Content/img/dislike.png" width="20px" style="margin-top:8px" /> @Html.ActionLink(",", "../Vote/AddDislikebycmt", new { idcomment = item.idcomment })
+                                                            </a> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i>
                                                             <a href="#">
-                                                                <img src="~/Content/img/etoile.png" width="25px" style="margin-top:5px" /> @Html.ActionLink(",", "../Rating/ADDRating", new { idpub = item.idpub })
-                                                            </a>
-                                                            <i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i>
-                                                            <a href="#">
-                                                                <img src="~/Content/img/flech.png" width="20px" style="margin-top:8px" /> @Html.ActionLink(",", "NombreVIEW", new { idpub = item.idpub })
+                                                                <img src="~/Content/img/flech.png" width="20px" style="margin-top:8px" /> @Html.ActionLink(",", "NombreLIKEcmt", new { idcomment = item.idcomment })
                                                             </a>
                                                         </div>
+
+                                                        <i></i>
 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="ques-type302">
                                                         <a href="#">
-                                                            <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true"></i>  @Html.ActionLink("Answer", "../comments/ListCmtrByPub", new { idpub = item.idpub })</button>
                                                         </a>
-                                                        <a href="#">
-                                                            <button type="button" class="q-type238">  @Html.ActionLink("Create comment", "../comments/Create", new { idpub = item.idpub }) </button>
-                                                        </a>
-
-                                                      
-
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </tbody>
 
-
                                 }
 
                                 <!--  End of content-1------>
-
 
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination">
@@ -404,25 +371,25 @@
                                         </li>
                                     </ul>
                                 </nav>
+
                             </div>
                         </div>
-                       
                         <!--end of col-md-9 -->
                         <!--strart col-md-3 (side bar)-->
                         <br />
                         <aside class="col-md-3 sidebar97239">
                             <div class="status-part3821">
-                                <b>Number of publication :</b>  @ViewBag.result</i></a>
+                                <b>Number of comments :</b>  @ViewBag.result</i></a>
                             </div>
+
                             <div class="recent-post3290">
-                                <h4 style="color:red">3 TOP VIEWS</h4>
+                                <h4 style="color:red">More relevant comments</h4>
                                 @foreach (var p in ViewBag.result1)
                                 {
 
                                     <div class="post-details021">
-                                        <center><i style="color: #29bbea"> Username :  </i><a>@p.Client.username</a>  </center> <a href="#" style="color:black"> Subject : @p.publication.subject</a><br />
-
-                                        <p>@p.publication.contents</p> <small style="color: #848991">@p.publication.date_discussion</small>
+                                        <a href="#" style="color:black">Username : @p.Client.username</a>
+                                        <p>@p.comments.contents</p> <small style="color: #848991">@p.comments.dateComment</small>
                                     </div>
                                     <hr>
                                 }
@@ -430,12 +397,9 @@
                         </aside>
                     </div>
                 </div>
-
+                <br /><br /><br />
             </section>
-            <br />
-            <br />
-            <br />
-            <br />
+
             <!--    footer -->
             <!-- End Gallery  -->
             <!-- Start Instagram Feed  -->
@@ -444,9 +408,7 @@
             <!-- End Footer  -->
             <!-- Start copyright  -->
 
-            <div class="footer-copyright">
-
-            </div>
+            
             <!-- End copyright  -->
 
             <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>

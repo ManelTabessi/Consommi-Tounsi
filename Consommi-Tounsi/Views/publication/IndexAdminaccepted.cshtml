@@ -20,8 +20,36 @@
     <link href="/Content/demo.css" rel="stylesheet" />
 </head>
 <style>
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+
+        .pagination > li:first-child > a, .pagination > li:first-child > span {
+            margin-left: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .pagination > li > a, .pagination > li > span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #337ab7;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .pagination > li {
+            display: inline;
+        }
     a {
-        color: #ccbdd5;
+        color: #101010;
         font-weight: 300;
     }
 </style>
@@ -37,23 +65,42 @@
                         CT
                     </a>
                     <a href="javascript:void(0)" class="simple-text logo-normal">
-                        Creative Tim
+                        Consommi Tounsi
                     </a>
                 </div>
                 <ul class="nav">
 
-                    <li class="active ">
+                   
+                    <div class="active ">
                         <a href="IndexAdmin">
-                            <i class="tim-icons icon-puzzle-10"></i>
-                            <p>Publication Waiting</p>
+                            <i class="tim-icons icon-time-alarm"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Publication waiting</a>
                         </a>
-                    </li>
-                    <li>
+                    </div>
+                    <div class="active ">
                         <a href="IndexAdminaccepted">
-                            <i class="tim-icons icon-align-center"></i>
-                            <p>Publication Accepted</p>
+                            <i class="tim-icons icon-check-2"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Publication accepted</a>
                         </a>
-                    </li>
+                    </div>
+                    <div class="active ">
+                        <a href="../Delivery_Man/ListLivreur">
+                            <i class="tim-icons icon-single-02"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Delivery Man</a>
+                        </a>
+                    </div>
+                    <div class="active ">
+                        <a href="../Delivery/ListLivraison">
+                            <i class="tim-icons icon-delivery-fast"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Delivery</a>
+                        </a>
+                    </div>
+                    <div class="active ">
+                        <a href="../Reclamation/ListReclamation">
+                            <i class="tim-icons icon-alert-circle-exc"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Reclamation</a>
+                        </a>
+                    </div>
 
                 </ul>
             </div>
@@ -70,7 +117,7 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand" href="javascript:void(0)">Consommi Tounsi</a>
+                        <a class="navbar-brand" href="javascript:void(0)"></a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -139,19 +186,33 @@
             @{
                 ViewBag.Title = "IndexAdminaccepted";
             }
-
+             
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card ">
 
-                            <center>   <i class="tim-icons icon-trash-simple"></i> <button> @Html.ActionLink("DeletePubsWithNoInteraction", "deletePubsWithNoInteraction", new { @class = "btn btn-sm btn-primary btn-simple active" })</button></center>
-                            <center>   <i class="tim-icons icon-trash-simple"></i> <button> @Html.ActionLink("deleteBadJPQL", "../comments/deleteBadJPQL", new { @class = "btn btn-sm btn-primary btn-simple active" })</button></center>
+                            <center>   <button style="color:black"> <i class="tim-icons icon-trash-simple"></i> @Html.ActionLink("Delete Pubs With No Interaction", "deletePubsWithNoInteraction", new { @class = "btn btn-sm btn-primary btn-simple active"  })</button></center>
+                           <br /> <center>  <button>  <i class="tim-icons icon-trash-simple"></i> @Html.ActionLink("Delete Bad Comments", "../comments/deleteBadJPQL", new { @class = "btn btn-sm btn-primary btn-simple active" })</button></center>
 
                             <div class="card-header">
-                                <h4 class="card-title"> List publication</h4>
-                                Nombre de publication<td> @ViewBag.result</td>
+                                <h4 class="card-title"> </h4>
+                                <div class="col-sm-12">
+                                    <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                        <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                                            <input type="radio" name="options" checked="">
+                                            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                                                Nombre de publication : @ViewBag.result
+                                                <span class="d-block d-sm-none">
+                                                    <i class="tim-icons icon-single-02"></i>
+                                                </span>
+</label>
+
+                                    </div>
+                                </div>
+                              
                             </div>
+
                             @using (Html.BeginForm())
                             {
 
@@ -216,8 +277,8 @@
                                                     </td>
                                                     <td>
 
-                                                        <button style="border: #d356bf; background-color: #d356bf ">   <i class="tim-icons icon-pencil"></i>  @Html.ActionLink("Update Rating", "EditRating", new { idpub = item.idpub })</button>
-                                                        <button style="border: #d356bf; background-color: #d356bf ">   <i class="tim-icons icon-pencil"></i>  @Html.ActionLink("Commentaires", "../comments/ListCmtrByPubAdmin", new { idpub = item.idpub })</button>
+                                                        <button style="border: #d356bf; background-color: #d356bf ">   <i class="tim-icons icon-shape-star"></i>  @Html.ActionLink("Rating", "EditRating", new { idpub = item.idpub })</button>
+                                                        <br />  <br />    <button style="border: #d356bf; background-color: #d356bf ">   <i class="tim-icons icon-notes"></i>  @Html.ActionLink("Comments", "../comments/ListCmtrByPubAdmin", new { idpub = item.idpub })</button>
 
                                                     </td>
                                                 </tr>
@@ -265,6 +326,21 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination">
+                                            <li>
+                                                <a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a>
+                                            </li>
+                                            <li><a href="IndexAdminaccepted">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li>
+                                                <a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                     <!--   Core JS Files   -->
                                     <script src="/Scripts/core/jquery.min.js"></script>
                                     <script src="/Scripts/core/popper.min.js"></script>

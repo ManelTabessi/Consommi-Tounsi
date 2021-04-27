@@ -18,30 +18,28 @@
     <link href="/Content/demo.css" rel="stylesheet" />
 
 </head>
-@model Consommi_Tounsi.Models.publication
+@model Consommi_Tounsi.Models.comments
 
 @{
-    ViewBag.Title = "Refuser";
+    ViewBag.Title = "deleteBadJPQL";
 }
+
 <div style="margin-left:10px">
-    <h4 style="color:white"> @Html.ActionLink("Back to List", "IndexAdmin")</h4>
+    <h4 style="color:white"> @Html.ActionLink("Back ", "../publication/IndexAdminaccepted")</h4>
 </div>
 
 
-<center><h3><img src="~/Content/img/refuser.png" width="50px" />Are you sure you want to refuse this publication ?</h3></center>
+<center><h3><img src="~/Content/img/delete.png" width="50px" />Are you sure you want to delete bad comments ??</h3></center>
+
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-  
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
-<div class="form-actions no-color" style="margin-left:700px">
-    <input type="submit" value="Yes" class="btn btn-default" style="color:red" />
-</div>
-        
-
+    <div class="form-actions no-color" style="margin-left:700px">
+        <input type="submit" value="Delete" class="btn btn-default" /> 
+    </div>
 }
 </html>

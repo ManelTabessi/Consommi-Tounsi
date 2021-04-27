@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Consommi_Tounsi.Models.publication>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "IndexEspaceClient";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="/Content/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/Content/custom.css">
+    <link rel="stylesheet" href="/Content/all.css">
 
 
 
@@ -47,6 +48,18 @@
     .ques-icon-info3293 .fa-star {
         color: #29bbea;
     }
+    .fa-eye:before {
+        content: "\f06e";
+    }
+    .tim-icons {
+        display: inline-block;
+        font: normal normal normal 1em/1 'Nucleo';
+        vertical-align: middle;
+        speak: none;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
     .attr-nav > ul > li > a {
         color: #d32c2c;
         display: block;
@@ -60,7 +73,22 @@
         padding: 20px;
         box-shadow: 0px 0px 13px -3px #777;
     }
-
+    .element.style {
+        background-color: red;
+        border: ridge;
+        border-color: red;
+        margin-top: 20px;
+    }
+    .footer-search .fa-pencil-square-o {
+        position: absolute;
+        margin-top: 26px;
+        z-index: 9999;
+        margin-left: 0px;
+        font-size: 25px;
+        background-color: #222629;
+        padding: 9px;
+        color: #fff;
+    }
     .all-title-box {
         background: url("/Content/img/Forum.PNG") no-repeat center center;
         -webkit-background-size: cover;
@@ -90,34 +118,7 @@
         border-color: black;
         border: dotted;
         color: #fff;
-
-       
     }
-    .pagination {
-        display: inline-block;
-        padding-left: 0;
-        margin: 20px 0;
-        border-radius: 4px;
-    }
-        .pagination > li:first-child > a, .pagination > li:first-child > span {
-            margin-left: 0;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        }
-        .pagination > li > a, .pagination > li > span {
-            position: relative;
-            float: left;
-            padding: 6px 12px;
-            margin-left: -1px;
-            line-height: 1.42857143;
-            color: #337ab7;
-            text-decoration: none;
-            background-color: #fff;
-            border: 1px solid #ddd;
-        }
-        .pagination > li {
-            display: inline;
-        }
 </style>
 <body>
 
@@ -177,6 +178,7 @@
                         <li class="nav-item"><a class="nav-link" href="gallery.html">RECLAMATION</a></li>
 
                         <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="IndexEspaceClient">Profil</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -244,7 +246,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="breadcrumb">
-                        <a href="/publication/Create" style="color:red">ADD PUBLICATION</a>
+                        @Html.ActionLink("ADD PUBLICATION", "Create")
                         <li class="breadcrumb-item active" style="color:red"> </li>
 
 
@@ -255,7 +257,7 @@
     </div>
     <!-- End All Title Box -->
     <!-- Start Gallery  -->
-    
+
     <div class="products-box">
         <div class="container">
             <div class="row">
@@ -313,8 +315,6 @@
                             <div id="main">
 
 
-
-
                                 @foreach (var item in Model)
                                 {
 
@@ -339,43 +339,26 @@
                                                         </div>
                                                         <hr>
                                                         <div class="ques-icon-info3293">
-                                                          
-                                                            <a href="#"><i class="fa fa-star" aria-hidden="true">   @Html.DisplayFor(modelItem => item.rating)</i>  </a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true">   @Html.DisplayFor(modelItem => item.date_discussion)</i></a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i aria-hidden="true"> </i></a>
-                                                            <a href="#" style="color:white">
-                                                                <img src="~/Content/img/Like.png" width="20px" /> @Html.ActionLink(",", "../Vote/Addlike", new { idpub = item.idpub })
-                                                            </a>
-                                                            <i></i>
-                                                            <style>
-                                                                a {
-                                                                    color: #ffffff;
-                                                                    text-decoration: none;
-                                                                    outline: none;
-                                                                }
-                                                            </style>
-                                                            <a href="#">
-                                                                <img src="~/Content/img/dislike.png" width="20px" style="margin-top:8px" /> @Html.ActionLink(",", "../Vote/AddDislike", new { idpub = item.idpub })
-                                                            </a> <i></i><i></i>
-                                                            <a href="#">
-                                                                <img src="~/Content/img/etoile.png" width="25px" style="margin-top:5px" /> @Html.ActionLink(",", "../Rating/ADDRating", new { idpub = item.idpub })
-                                                            </a>
-                                                            <i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i> <i></i><i></i><i></i><i></i>
-                                                            <a href="#">
-                                                                <img src="~/Content/img/flech.png" width="20px" style="margin-top:8px" /> @Html.ActionLink(",", "NombreVIEW", new { idpub = item.idpub })
-                                                            </a>
-                                                        </div>
-
+                                                            <a href="#"><i class="fa fa-star" aria-hidden="true">  @Html.DisplayFor(modelItem => item.rating) </i> </a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i class="fa fa-clock-o" aria-hidden="true">   @Html.DisplayFor(modelItem => item.date_discussion)</i></a> <a href="#"><i aria-hidden="true"> </i></a> <a href="#"><i aria-hidden="true"> </i></a><a href="#">
+    <i></i><a href="#">
+        <img src="~/Content/img/edit.png" width="15px" /> @Html.ActionLink("Edit", "Edit", new { idpub = item.idpub })
+    </a><i></i>
+    <a href="#">
+        <img src="~/Content/img/deletefront.png" width="20px" /> @Html.ActionLink("Delete", "Delete", new { idpub = item.idpub })
+    </a>
+</div>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-2">
                                                     <div class="ques-type302">
                                                         <a href="#">
-                                                            <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true"></i>  @Html.ActionLink("Answer", "../comments/ListCmtrByPub", new { idpub = item.idpub })</button>
+                                                            <button type="button" class="q-type238"><i class="fa fa-comment" aria-hidden="true"></i>  @Html.ActionLink("Answer", "../comments/ListCmtrByPubEspaceClient", new { idpub = item.idpub })</button>
                                                         </a>
                                                         <a href="#">
                                                             <button type="button" class="q-type238">  @Html.ActionLink("Create comment", "../comments/Create", new { idpub = item.idpub }) </button>
                                                         </a>
 
-                                                      
 
                                                     </div>
                                                 </div>
@@ -389,24 +372,9 @@
                                 <!--  End of content-1------>
 
 
-                                <nav aria-label="Page navigation">
-                                    <ul class="pagination">
-                                        <li>
-                                            <a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a>
-                                        </li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+
                             </div>
                         </div>
-                       
                         <!--end of col-md-9 -->
                         <!--strart col-md-3 (side bar)-->
                         <br />
@@ -425,6 +393,9 @@
                                         <p>@p.publication.contents</p> <small style="color: #848991">@p.publication.date_discussion</small>
                                     </div>
                                     <hr>
+
+
+
                                 }
                             </div>
                         </aside>

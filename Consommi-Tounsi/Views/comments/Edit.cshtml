@@ -1,7 +1,7 @@
-﻿@model Consommi_Tounsi.Models.publication
+﻿@model Consommi_Tounsi.Models.comments
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
 
@@ -60,6 +60,7 @@
         border-radius: .25rem;
         transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
+
     .attr-nav > ul > li > a {
         color: #d32c2c;
         display: block;
@@ -94,7 +95,6 @@
             /* border-radius: 0px; */
             float: right;
         }
-
 </style>
 <body>
 
@@ -149,10 +149,18 @@
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shop.html">Sidebar Shop</a></li>
+                                <li><a href="shop-detail.html">Shop Detail</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="gallery.html">FORUM</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">RECLAMATION</a></li>
-
                         <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
                     </ul>
                 </div>
@@ -225,62 +233,51 @@
             </div>
         </div>
     </div>
-   
 
-
-
-    
     <div class="contact-box-main">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-sm-12">
                     <div class="contact-form-right">
-                        <center> <h2>ADD PUBLICATION</h2></center>   
+                        <center> <h2>UPDATE COMMENT</h2></center>
                         <br />
+
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
+
                             <form id="contactForm">
-
-
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-horizontal">
                                             <hr />
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                          
                                             <div class="form-group">
-                                           Subject <div class="col-md-10">
+                                                Contents <div class="col-md-10">
 
-                                                    @Html.EditorFor(model => model.subject, new { htmlAttributes = new { @class = "form-control" } }) 
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                               Contents<div class="col-md-10">
                                                     @Html.TextAreaFor(model => model.contents, new { htmlAttributes = new { @class = "form-control" } })
                                                     @Html.ValidationMessageFor(model => model.contents, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
 
 
+
                                             <div class="form-group">
                                                 <div class="col-md-offset-2 col-md-10">
-                                                    <div class="submit-button text-center">
-                                                        <input type="submit" value="Send" class="btn hvr-hover" />
-                                                    </div>
+                                                    <input type="submit" value="Save" class="btn btn-default" style="background-color:red" />
                                                 </div>
                                             </div>
                                         </div>
-
-
                             </form>
                         }
+
                     </div>
                 </div>
                 <div></div>
                 <br />
                 <br /><br /><br /><br /><br />
-                
+
                 <!-- End copyright  -->
 
                 <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>

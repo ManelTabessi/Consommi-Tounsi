@@ -165,23 +165,31 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\commentsController.cs" />
     <Compile Include="Controllers\DecisionController.cs" />
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\Delivery_ManController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\publicationController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\ReclamationController.cs" />
+    <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\comments.cs" />
     <Compile Include="Models\Decision.cs" />
     <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\Delivery_Man.cs" />
     <Compile Include="Models\FraisLiv.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\publication.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Reclamation.cs" />
+    <Compile Include="Models\Vote.cs" />
+    <Compile Include="Models\Vus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -515,6 +523,27 @@
     <Content Include="Views\Reclamation\Delete.cshtml" />
     <Content Include="Views\Reclamation\ListReclamation.cshtml" />
     <Content Include="Views\Reclamation\recl.cshtml" />
+    <Content Include="Views\publication\Accepter.cshtml" />
+    <Content Include="Views\publication\Create.cshtml" />
+    <Content Include="Views\publication\Delete.cshtml" />
+    <Content Include="Views\publication\DeletepubAdmin.cshtml" />
+    <Content Include="Views\publication\deletePubsWithNoInteraction.cshtml" />
+    <Content Include="Views\publication\Edit.cshtml" />
+    <Content Include="Views\publication\EditRating.cshtml" />
+    <Content Include="Views\publication\Index.cshtml" />
+    <Content Include="Views\publication\IndexAdmin.cshtml" />
+    <Content Include="Views\publication\IndexAdminaccepted.cshtml" />
+    <Content Include="Views\publication\IndexEspaceClient.cshtml" />
+    <Content Include="Views\publication\NombreVIEW.cshtml" />
+    <Content Include="Views\publication\Refuser.cshtml" />
+    <Content Include="Views\comments\Create.cshtml" />
+    <Content Include="Views\comments\Delete.cshtml" />
+    <Content Include="Views\comments\deleteBadJPQL.cshtml" />
+    <Content Include="Views\comments\Edit.cshtml" />
+    <Content Include="Views\comments\ListCmtrByPub.cshtml" />
+    <Content Include="Views\comments\ListCmtrByPubAdmin.cshtml" />
+    <Content Include="Views\comments\ListCmtrByPubEspaceClient.cshtml" />
+    <Content Include="Views\comments\NombreLIKEcmt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

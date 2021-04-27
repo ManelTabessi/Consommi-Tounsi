@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,30 +19,36 @@
     <link href="/Content/demo.css" rel="stylesheet" />
 
 </head>
+
 @model Consommi_Tounsi.Models.publication
 
 @{
-    ViewBag.Title = "Refuser";
+    ViewBag.Title = "EditRating";
 }
 <div style="margin-left:10px">
-    <h4 style="color:white"> @Html.ActionLink("Back to List", "IndexAdmin")</h4>
+    <h4 style="color:white"> @Html.ActionLink("Back to List", "IndexAdminaccepted")</h4>
 </div>
+<center><h3><img src="~/Content/img/accepted.png" width="50px" />Are you sure you want to Update rating this publication ?</h3></center>
 
-
-<center><h3><img src="~/Content/img/refuser.png" width="50px" />Are you sure you want to refuse this publication ?</h3></center>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-  
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-<div class="form-actions no-color" style="margin-left:700px">
-    <input type="submit" value="Yes" class="btn btn-default" style="color:red" />
-</div>
-        
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
+
+    <div class="form-actions no-color" style="margin-left:700px">
+        <input type="submit" value="Save" class="btn btn-default" style="color:#86c523"/>
+    </div>
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
 </html>

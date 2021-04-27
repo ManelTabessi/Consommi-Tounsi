@@ -1,0 +1,445 @@
+﻿@model Consommi_Tounsi.Models.comments
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="/Content/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/Content/img/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/Content/bootstrap1.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/Content/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="/Content/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Content/custom.css">
+
+
+
+    <link href="/Content/animate.css" rel="stylesheet" type="text/css">
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<style>
+
+    .attr-nav > ul > li > a {
+        color: #d32c2c;
+        display: block;
+        padding: 28px 15px;
+        position: relative;
+    }
+
+    .question-type2033 {
+        background-color: #fff;
+        margin-bottom: 20px;
+        padding: 20px;
+        box-shadow: 0px 0px 13px -3px #777;
+    }
+
+    .all-title-box {
+        background: url("/Content/img/Forum.PNG") no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        text-align: center;
+        background-attachment: fixed;
+        padding: 70px 0px;
+        position: relative;
+    }
+
+        .all-title-box .breadcrumb {
+            background: #fffefe;
+            /* margin: 0px; */
+            display: inline-block;
+            /* border-radius: 0px; */
+            float: right;
+        }
+
+    
+    #main > input:checked + label {
+        color: #555;
+        border: 1px solid #29bbea;
+        /* border-top: 2px solid #FF7361; */
+        /* border-bottom: 1px solid #FF7361; */
+        background-color: #ffffff;
+    }
+    .question-type2033 {
+        background-color: #fff;
+        margin-bottom: 440px;
+        padding: 30px;
+        box-shadow: 0px 0px 13px -3px #777;
+        border: 1px solid #29bbea;
+    }
+    .q-type238 {
+        margin-top: 2px;
+        background-color: #29bbea;
+        font-size: 15px;
+        padding: 10px 20px 6px 10px;
+        border-color: black;
+        border: initial;
+        color: #fff;
+        float: right;
+    }
+    hr {
+        border: none;
+        /* border-top: 1px solid #DEDEDE; */
+        background-color: #fff;
+    }
+    textarea {
+        display: block;
+        width: 150%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+</style>
+<body>
+
+    <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="custom-select-box">
+
+                    </div>
+                    <div class="right-phone-box">
+
+                    </div>
+                    <div class="our-link">
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="login-box">
+                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                            <option>Register Here</option>
+                            <option>Sign In</option>
+                        </select>
+                    </div>
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/Content/img/logoConsomi.png" width="110px" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shop.html">Sidebar Shop</a></li>
+                                <li><a href="shop-detail.html">Shop Detail</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">FORUM</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <li class="side-menu">
+                            <a href="#">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">3</span>
+                                <p>My Cart</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+            <div class="side">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                <li class="cart-box">
+                    <ul class="cart-list">
+                        <li>
+                            <a href="#" class="photo"><img src="/Content/img/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Delica omtantur </a></h6>
+                            <p>1x - <span class="price">$80.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="/Content/img/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Omnes ocurreret</a></h6>
+                            <p>1x - <span class="price">$60.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="/Content/img/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Agam facilisis</a></h6>
+                            <p>1x - <span class="price">$40.00</span></p>
+                        </li>
+                        <li class="total">
+                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+    <!-- Start Gallery  -->
+
+    <div class="products-box">
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+
+
+                    </div>
+                </div>
+               
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+
+                </div>
+            </div>
+
+
+            <!-- ======content section/body=====-->
+            <section class="main-content920">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="main">
+
+
+
+                                <input id="tab1" type="radio" name="tabs" checked>
+                                <label for="tab1">ADD COMMENT</label>
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <tbody>
+                                        <!--Recent Question Content Section -->
+                                        <div class="question-type2033">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <div class="left-user12923 left-user12923-repeat">
+                                                        <a href="#"><img src="~/Content/img/images.png" alt="image"> </a> <center> </center>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-9">
+                                                    <div class="right-description893">
+                                                        <div id="que-hedder2983">
+                                                            <h3><a href="post-deatils.html" target="_blank"> </a></h3>
+                                                            <div class="details2-239">
+                                                                <div class="col-md-12 nopadding">
+
+                                                                    <div class="row-fluid Editor-container">
+                                                                        <div id="menuBarDiv" class="row-fluid">
+                                                                            <div class="btn-group">
+                                                                                <div class="btn-group" title="Fonts" style="cursor: pointer;">
+                                                                                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" title="Fonts">Font<span class="caret"></span></a><ul class="dropdown-menu"><li><a tabindex="-1" href="javascript:void(0)">Sans serif</a></li><li><a tabindex="-1" href="javascript:void(0)">Serif</a></li><li><a tabindex="-1" href="javascript:void(0)">Wide</a></li><li><a tabindex="-1" href="javascript:void(0)">Narrow</a></li><li><a tabindex="-1" href="javascript:void(0)">Comic Sans MS</a></li><li><a tabindex="-1" href="javascript:void(0)">Courier New</a></li><li><a tabindex="-1" href="javascript:void(0)">Garamond</a></li><li><a tabindex="-1" href="javascript:void(0)">Georgia</a></li><li><a tabindex="-1" href="javascript:void(0)">Tahoma</a></li><li><a tabindex="-1" href="javascript:void(0)">Trebuchet MS</a></li><li><a tabindex="-1" href="javascript:void(0)">Verdana</a></li></ul>
+                                                                                </div><div class="btn-group" title="Paragraph Format" style="cursor: pointer;">
+                                                                                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" title="Paragraph Format">
+                                                                                        Formatting<span class="caret">
+                                                                                        </span>
+                                                                                    </a><ul class="dropdown-menu">
+                                                                                        <li>
+                                                                                            <a tabindex="-1" href="javascript:void(0)">Heading 1</a>
+                                                                                        </li>
+                                                                                        <li><a tabindex="-1" href="javascript:void(0)">Heading 2</a></li>
+                                                                                        <li>
+                                                                                            <a tabindex="-1" href="javascript:void(0)">Heading 3</a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a tabindex="-1" href="javascript:void(0)">Heading 4</a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a tabindex="-1" href="javascript:void(0)">Heading 5</a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a tabindex="-1" href="javascript:void(0)">Heading 6</a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a tabindex="-1" href="javascript:void(0)">Paragraph</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div><div class="btn-group" title="Font Size" style="cursor: pointer;">
+                                                                                    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" title="Font Size">Font size<span class="caret"></span></a><ul class="dropdown-menu"><li><a tabindex="-1" href="javascript:void(0)">Small</a></li><li><a tabindex="-1" href="javascript:void(0)">Normal</a></li><li><a tabindex="-1" href="javascript:void(0)">Medium</a></li><li><a tabindex="-1" href="javascript:void(0)">Large</a></li><li><a tabindex="-1" href="javascript:void(0)">Huge</a></li></ul>
+                                                                                </div>
+                                                                            </div><div class="btn-group"><a href="javascript:void(0)" class="btn btn-default" title="Bold" style="cursor: pointer;"><i class="fa fa-bold"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Italics" style="cursor: pointer;"><i class="fa fa-italic"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Underline" style="cursor: pointer;"><i class="fa fa-underline"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Text/Background Color" style="cursor: pointer;"><i class="fa fa-font"></i></a></div><div class="btn-group">
+                                                                                <a href="javascript:void(0)" class="btn btn-default" title="Align Left" style="cursor: pointer;"><i class="fa fa-align-left"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Align Center" style="cursor: pointer;"><i class="fa fa-align-center"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Align Right" style="cursor: pointer;"><i class="fa fa-align-right"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Justify" style="cursor: pointer;">
+                                                                                    <i class="fa fa-align-justify"></i>
+                                                                                </a>
+                                                                            </div><div class="btn-group"><a href="javascript:void(0)" class="btn btn-default" title="Increase Indent" style="cursor: pointer;"><i class="fa fa-indent"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Decrease Indent" style="cursor: pointer;"><i class="fa fa-outdent"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Block Quote" style="cursor: pointer;"><i class="fa fa-quote-right"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Insert/Remove Numbered List" style="cursor: pointer;"><i class="fa fa-list-ol"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Insert/Remove Bulleted List" style="cursor: pointer;"><i class="fa fa-list-ul"></i></a></div><div class="btn-group"><a href="javascript:void(0)" class="btn btn-default" title="Undo" style="cursor: pointer;"><i class="fa fa-undo"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Redo" style="cursor: pointer;"><i class="fa fa-repeat"></i></a></div><div class="btn-group"><a href="#InsertLink" role="button" class="btn btn-default" data-toggle="modal" title="Insert Link"><i class="fa fa-link"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Unlink" style="cursor: pointer;"><i class="fa fa-unlink"></i></a><a href="#InsertImage" role="button" class="btn btn-default" data-toggle="modal" title="Insert Image"><i class="fa fa-picture-o"></i></a><a href="#InsertTable" role="button" class="btn btn-default" data-toggle="modal" title="Insert Table"><i class="fa fa-table"></i></a></div><div class="btn-group"><a href="javascript:void(0)" class="btn btn-default" title="Strike Through" style="cursor: pointer;"><i class="fa fa-strikethrough"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Horizontal Rule" style="cursor: pointer;"><i class="fa fa-minus"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Insert Special Character" style="cursor: pointer;"><i class="fa fa-asterisk"></i></a></div><div class="btn-group"><a href="javascript:void(0)" class="btn btn-default" title="Print" style="cursor: pointer;"><i class="fa fa-print"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Remove Formatting" style="cursor: pointer;"><i class="fa fa-eraser"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Select All" style="cursor: pointer;"><i class="fa fa-file-text"></i></a><a href="javascript:void(0)" class="btn btn-default" title="Source" style="cursor: pointer;"><i class="fa fa-code"></i></a></div><div class="btn-group">
+                                                                                <a href="javascript:void(0)" class="btn btn-default" title="Toggle Screen" style="cursor: pointer;">
+                                                                                    <i class="fa fa-arrows-alt"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-10">
+
+                                                                    @Html.TextAreaFor(model => model.contents, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.contents, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ques-details10018">
+                                                            <div class="ques-type302">
+                                                                <a href="#">
+                                                                    <button type="submit" class="q-type238"><i class="fa fa-comment" aria-hidden="true"></i> Send</button>
+                                                                </a>
+
+                                                                <p> </p>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                    </tbody>
+                                }
+                               
+                            </div>
+                        </div>
+                        <!--end of col-md-9 -->
+                        <!--strart col-md-3 (side bar)-->
+                        <br />
+                        
+                    </div>
+                </div>
+
+            </section>
+            <!--    footer -->
+            <!-- End Gallery  -->
+            <!-- Start Instagram Feed  -->
+            <!-- End Instagram Feed  -->
+            <!-- Start Footer  -->
+            <!-- End Footer  -->
+            <!-- Start copyright  -->
+
+            <div class="footer-copyright">
+
+            </div>
+            <!-- End copyright  -->
+
+            <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+
+            <script src="/Scripts/jquery-3.2.1.min.js"></script>
+            <script src="/Scripts/popper.min.js"></script>
+            <script src="/Scripts/bootstrap.min.js"></script>
+            <!-- ALL PLUGINS -->
+            <script src="/Scripts/jquery.superslides.min.js"></script>
+            <script src="/Scripts/bootstrap-select.js"></script>
+            <script src="/Scripts/inewsticker.js"></script>
+            <script src="/Scripts/bootsnav.js."></script>
+            <script src="/Scripts/images-loded.min.js"></script>
+            <script src="/Scripts/isotope.min.js"></script>
+            <script src="/Scripts/owl.carousel.min.js"></script>
+            <script src="/Scripts/baguetteBox.min.js"></script>
+            <script src="/Scripts/form-validator.min.js"></script>
+            <script src="/Scripts/contact-form-script.js"></script>
+            <script src="/Scripts/custom.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="/Scripts/jquery-3.1.1.min.js"></script>
+            <script src="/Scripts/bootstrap.min.js"></script>
+            <script src="/Scripts/npm.js"></script>
+
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</html>
+
