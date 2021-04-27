@@ -39,7 +39,6 @@
                         <a href="../Delivery_Man/ListLivreur">
                             <i class="tim-icons icon-single-02"></i>
                             <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Delivery Man</a>
-
                             <ul class="dropdown-menu">
                                 <li><a style="color:black" href="../Delivery_Man/LivreurDispo">List Delivery Man available</a></li>
                                 <li><a style="color:black" href="../Delivery_Man/LivreurNoDispo">List Delivery Man not available</a></li>
@@ -50,16 +49,30 @@
                     <div class="active ">
                         <a href="../Delivery/ListLivraison">
                             <i class="tim-icons icon-delivery-fast"></i>
-                            <a style="color:white" class="nav-link dropdown-toggle arrow">Delivery</a>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Delivery</a>
+                            <ul class="dropdown-menu">
+                                <li><a style="color:black" href="../Delivery/Frais">Calculate Fresh</a></li>
+                            </ul>
                         </a>
                     </div>
                     <div class="active ">
                         <a href="../Reclamation/ListReclamation">
                             <i class="tim-icons icon-alert-circle-exc"></i>
-                            <a style="color:white">Reclamation</a>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Reclamation</a>
                         </a>
                     </div>
-
+                    <div class="active ">
+                        <a href="">
+                            <i class="tim-icons icon-time-alarm"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Publication waiting</a>
+                        </a>
+                    </div>
+                    <div class="active ">
+                        <a href="">
+                            <i class="tim-icons icon-check-2"></i>
+                            <a style="color:white" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Publication accepted</a>
+                        </a>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -141,68 +154,61 @@
                                 @{
                                     ViewBag.Title = "Create";
                                 }
-
+                                
                                 @using (Html.BeginForm())
                                 {
                                     @Html.AntiForgeryToken()
 
-                                    <div class="form-horizontal">
+                                <div class="form-horizontal">
 
-                                        <div class="form-group">
-                                            @Html.ValidationMessageFor(model => model.location, "Location", new { @class = "text-danger" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            @Html.ValidationMessageFor(model => model.weight, "Weight", new { @class = "text-danger" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.weight, new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            @Html.ValidationMessageFor(model => model.moyenT, "Means of transport", new { @class = "text-danger" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.moyenT, new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            @Html.ValidationMessageFor(model => model.fresh, "Fresh", new { @class = "text-danger" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.fresh, new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            @Html.ValidationMessageFor(model => model.date_debut, "Start date", new { @class = "text-danger" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.date_debut, new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            @Html.ValidationMessageFor(model => model.date_fin, "End date", new { @class = "text-danger" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.date_fin, new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            @Html.ValidationMessageFor(model => model.Delivery_Man.id_deliv_man, "Id Delivery Man", new { @class = "text-danger" })
-                                            <div class="col-md-10">
-                                                @Html.EditorFor(model => model.Delivery_Man.id_deliv_man, new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Save" class="btn btn-fill btn-primary" style="margin-left:150px" />
-                                            </div>
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(model => model.location, "Location", new { @class = "text-danger" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" } })
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(model => model.moyenT, "Means of transport", new { @class = "text-danger" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.moyenT, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(model => model.fresh, "Fresh", new { @class = "text-danger" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.fresh, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(model => model.date_debut, "Start date", new { @class = "text-danger" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.date_debut, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(model => model.date_fin, "End date", new { @class = "text-danger" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.date_fin, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.ValidationMessageFor(model => model.Delivery_Man.id_deliv_man, "Id Delivery Man", new { @class = "text-danger" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Delivery_Man.id_deliv_man, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>                                    
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Save" class="btn btn-fill btn-primary" style="margin-left:150px" />
+                                        </div>
+                                    </div>
+                                </div>
                                 }
                                 @section Scripts {
                                     @Scripts.Render("~/bundles/jqueryval")
@@ -265,123 +271,123 @@
     <script src="/Scripts/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
     <script src="/Content/demo.js"></script>
     <script>
-        $(document).ready(function () {
-            $().ready(function () {
-                $sidebar = $('.sidebar');
-                $navbar = $('.navbar');
-                $main_panel = $('.main-panel');
+                                        $(document).ready(function () {
+                                            $().ready(function () {
+                                                $sidebar = $('.sidebar');
+                                                $navbar = $('.navbar');
+                                                $main_panel = $('.main-panel');
 
-                $full_page = $('.full-page');
+                                                $full_page = $('.full-page');
 
-                $sidebar_responsive = $('body > .navbar-collapse');
-                sidebar_mini_active = true;
-                white_color = false;
+                                                $sidebar_responsive = $('body > .navbar-collapse');
+                                                sidebar_mini_active = true;
+                                                white_color = false;
 
-                window_width = $(window).width();
+                                                window_width = $(window).width();
 
-                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-
-
-                $('.fixed-plugin a').click(function (event) {
-                    if ($(this).hasClass('switch-trigger')) {
-                        if (event.stopPropagation) {
-                            event.stopPropagation();
-                        } else if (window.event) {
-                            window.event.cancelBubble = true;
-                        }
-                    }
-                });
-
-                $('.fixed-plugin .background-color span').click(function () {
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
-
-                    var new_color = $(this).data('color');
-
-                    if ($sidebar.length != 0) {
-                        $sidebar.attr('data', new_color);
-                    }
-
-                    if ($main_panel.length != 0) {
-                        $main_panel.attr('data', new_color);
-                    }
-
-                    if ($full_page.length != 0) {
-                        $full_page.attr('filter-color', new_color);
-                    }
-
-                    if ($sidebar_responsive.length != 0) {
-                        $sidebar_responsive.attr('data', new_color);
-                    }
-                });
-
-                $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
-                    var $btn = $(this);
-
-                    if (sidebar_mini_active == true) {
-                        $('body').removeClass('sidebar-mini');
-                        sidebar_mini_active = false;
-                        blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-                    } else {
-                        $('body').addClass('sidebar-mini');
-                        sidebar_mini_active = true;
-                        blackDashboard.showSidebarMessage('Sidebar mini activated...');
-                    }
-
-                    // we simulate the window Resize so the charts will get updated in realtime.
-                    var simulateWindowResize = setInterval(function () {
-                        window.dispatchEvent(new Event('resize'));
-                    }, 180);
-
-                    // we stop the simulation of Window Resize after the animations are completed
-                    setTimeout(function () {
-                        clearInterval(simulateWindowResize);
-                    }, 1000);
-                });
-
-                $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
-                    var $btn = $(this);
-
-                    if (white_color == true) {
-
-                        $('body').addClass('change-background');
-                        setTimeout(function () {
-                            $('body').removeClass('change-background');
-                            $('body').removeClass('white-content');
-                        }, 900);
-                        white_color = false;
-                    } else {
-
-                        $('body').addClass('change-background');
-                        setTimeout(function () {
-                            $('body').removeClass('change-background');
-                            $('body').addClass('white-content');
-                        }, 900);
-
-                        white_color = true;
-                    }
+                                                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
 
-                });
 
-                $('.light-badge').click(function () {
-                    $('body').addClass('white-content');
-                });
+                                                $('.fixed-plugin a').click(function (event) {
+                                                    if ($(this).hasClass('switch-trigger')) {
+                                                        if (event.stopPropagation) {
+                                                            event.stopPropagation();
+                                                        } else if (window.event) {
+                                                            window.event.cancelBubble = true;
+                                                        }
+                                                    }
+                                                });
 
-                $('.dark-badge').click(function () {
-                    $('body').removeClass('white-content');
-                });
-            });
-        });
+                                                $('.fixed-plugin .background-color span').click(function () {
+                                                    $(this).siblings().removeClass('active');
+                                                    $(this).addClass('active');
+
+                                                    var new_color = $(this).data('color');
+
+                                                    if ($sidebar.length != 0) {
+                                                        $sidebar.attr('data', new_color);
+                                                    }
+
+                                                    if ($main_panel.length != 0) {
+                                                        $main_panel.attr('data', new_color);
+                                                    }
+
+                                                    if ($full_page.length != 0) {
+                                                        $full_page.attr('filter-color', new_color);
+                                                    }
+
+                                                    if ($sidebar_responsive.length != 0) {
+                                                        $sidebar_responsive.attr('data', new_color);
+                                                    }
+                                                });
+
+                                                $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+                                                    var $btn = $(this);
+
+                                                    if (sidebar_mini_active == true) {
+                                                        $('body').removeClass('sidebar-mini');
+                                                        sidebar_mini_active = false;
+                                                        blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+                                                    } else {
+                                                        $('body').addClass('sidebar-mini');
+                                                        sidebar_mini_active = true;
+                                                        blackDashboard.showSidebarMessage('Sidebar mini activated...');
+                                                    }
+
+                                                    // we simulate the window Resize so the charts will get updated in realtime.
+                                                    var simulateWindowResize = setInterval(function () {
+                                                        window.dispatchEvent(new Event('resize'));
+                                                    }, 180);
+
+                                                    // we stop the simulation of Window Resize after the animations are completed
+                                                    setTimeout(function () {
+                                                        clearInterval(simulateWindowResize);
+                                                    }, 1000);
+                                                });
+
+                                                $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
+                                                    var $btn = $(this);
+
+                                                    if (white_color == true) {
+
+                                                        $('body').addClass('change-background');
+                                                        setTimeout(function () {
+                                                            $('body').removeClass('change-background');
+                                                            $('body').removeClass('white-content');
+                                                        }, 900);
+                                                        white_color = false;
+                                                    } else {
+
+                                                        $('body').addClass('change-background');
+                                                        setTimeout(function () {
+                                                            $('body').removeClass('change-background');
+                                                            $('body').addClass('white-content');
+                                                        }, 900);
+
+                                                        white_color = true;
+                                                    }
+
+
+                                                });
+
+                                                $('.light-badge').click(function () {
+                                                    $('body').addClass('white-content');
+                                                });
+
+                                                $('.dark-badge').click(function () {
+                                                    $('body').removeClass('white-content');
+                                                });
+                                            });
+                                        });
     </script>
     <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
     <script>
-        window.TrackJS &&
-            TrackJS.install({
-                token: "ee6fab19c5a04ac1a32a645abde4613a",
-                application: "black-dashboard-free"
-            });
+                                        window.TrackJS &&
+                                            TrackJS.install({
+                                                token: "ee6fab19c5a04ac1a32a645abde4613a",
+                                                application: "black-dashboard-free"
+                                            });
     </script>
 </body>
 

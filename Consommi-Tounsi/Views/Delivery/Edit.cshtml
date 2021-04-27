@@ -97,7 +97,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav ml-auto">
-                            
+
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     <div class="photo">
@@ -120,138 +120,103 @@
                     </div>
                 </div>
             </nav>
-            
             <div class="content" style="margin-left:150px">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
                             <div style="margin-left:10px">
-                                @Html.ActionLink("Back", "ListLivreur")
+                                @Html.ActionLink("Back", "../Delivery/ListLivraison")
                             </div>
                             <div class="card-header">
-                                <h2 class="card-title" style="margin-left:120px"> Create Delivery Man</h2>
+                                <h2 class="card-title" style="margin-left:120px"> Edit Delivery</h2>
                             </div>
 
                             <div class="card-body">
-
-
-                                @model Consommi_Tounsi.Models.Delivery_Man
+                                @model Consommi_Tounsi.Models.Delivery
 
                                 @{
-                                    ViewBag.Title = "Create";
+                                    ViewBag.Title = "Edit";
                                 }
-
                                 @using (Html.BeginForm())
                                 {
                                     @Html.AntiForgeryToken()
 
-                                <div class="form-group">
-                                    @Html.ValidationMessageFor(model => model.name_deliv_man, "Name", new { @class = "text-danger" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.name_deliv_man, new { htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                </div>
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            @Html.ValidationMessageFor(model => model.date_debut, "Start date", new { @class = "text-danger" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.date_debut, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
 
-                                <div class="form-group">
-                                    @Html.ValidationMessageFor(model => model.email_deliv_man, "Email", new { @class = "text-danger" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.email_deliv_man, new { htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.ValidationMessageFor(model => model.phone_num_deliv_man, "Phone number", new { @class = "text-danger" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.phone_num_deliv_man, new { htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.ValidationMessageFor(model => model.etat, "State", new { @class = "text-danger" })
-                                    <div class="col-md-10">
-                                        <div class="checkbox">
-                                            @Html.EditorFor(model => model.etat)
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Save" class="btn btn-fill btn-primary" style="margin-left:150px" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.ValidationMessageFor(model => model.chargeT_liv, "Workload", new { @class = "text-danger" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.chargeT_liv, new { htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Save" class="btn btn-fill btn-primary" style="margin-left:180px" />
-                                        </div>
-                                    </div>
-
                                 }
                                 @section Scripts {
                                     @Scripts.Render("~/bundles/jqueryval")
                                 }
-
-                            </div>
-
-                                    </div>
-                                </div>
-                </div>
-            </div>
-                    <footer class="footer">
-                        <div class="container-fluid">
-
-                            <div class="copyright" style="margin-right:400px">
-                                made with <i class="tim-icons icon-heart-2"></i> by
-                                <a href="javascript:void(0)" target="_blank">Consommi Tounsi</a>.
                             </div>
                         </div>
-                    </footer>
+                    </div>
                 </div>
-                                    </div>
-                                    <div class="fixed-plugin">
-                                        <div class="dropdown show-dropdown">
-                                            <a href="#" data-toggle="dropdown">
-                                                <i class="tim-icons icon-settings-gear-63"> </i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li class="header-title"> Sidebar Background</li>
-                                                <li class="adjustments-line">
-                                                    <a href="javascript:void(0)" class="switch-trigger background-color">
-                                                        <div class="badge-colors text-center">
-                                                            <span class="badge filter badge-primary active" data-color="primary"></span>
-                                                            <span class="badge filter badge-info" data-color="blue"></span>
-                                                            <span class="badge filter badge-success" data-color="green"></span>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </a>
-                                                </li>
-                                                <li class="adjustments-line text-center color-change">
-                                                    <span class="color-label">LIGHT MODE</span>
-                                                    <span class="badge light-badge mr-2"></span>
-                                                    <span class="badge dark-badge ml-2"></span>
-                                                    <span class="color-label">DARK MODE</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!--   Core JS Files   -->
-                                    <script src="/Scripts/core/jquery.min.js"></script>
-                                    <script src="/Scripts/core/popper.min.js"></script>
-                                    <script src="/Scripts/core/bootstrap.min.js"></script>
-                                    <script src="/Scripts/plugins/perfect-scrollbar.jquery.min.js"></script>
-                                    <!--  Google Maps Plugin    -->
-                                    <!-- Place this tag in your head or just before your close body tag. -->
-                                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-                                    <!-- Chart JS -->
-                                    <script src="/Scripts/plugins/chartjs.min.js"></script>
-                                    <!--  Notifications Plugin    -->
-                                    <script src="/Scripts/plugins/bootstrap-notify.js"></script>
-                                    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-                                    <script src="/Scripts/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-                                    <script src="/Content/demo.js"></script>
-                                    <script>
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+
+                    <div class="copyright" style="margin-right:400px">
+                        made with <i class="tim-icons icon-heart-2"></i> by
+                        <a href="javascript:void(0)" target="_blank">Consommi Tounsi</a>.
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="fixed-plugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown">
+                <i class="tim-icons icon-settings-gear-63"> </i>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="header-title"> Sidebar Background</li>
+                <li class="adjustments-line">
+                    <a href="javascript:void(0)" class="switch-trigger background-color">
+                        <div class="badge-colors text-center">
+                            <span class="badge filter badge-primary active" data-color="primary"></span>
+                            <span class="badge filter badge-info" data-color="blue"></span>
+                            <span class="badge filter badge-success" data-color="green"></span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                </li>
+                <li class="adjustments-line text-center color-change">
+                    <span class="color-label">LIGHT MODE</span>
+                    <span class="badge light-badge mr-2"></span>
+                    <span class="badge dark-badge ml-2"></span>
+                    <span class="color-label">DARK MODE</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script src="/Scripts/core/jquery.min.js"></script>
+    <script src="/Scripts/core/popper.min.js"></script>
+    <script src="/Scripts/core/bootstrap.min.js"></script>
+    <script src="/Scripts/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Google Maps Plugin    -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!-- Chart JS -->
+    <script src="/Scripts/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="/Scripts/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="/Scripts/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+    <script src="/Content/demo.js"></script>
+    <script>
                                         $(document).ready(function () {
                                             $().ready(function () {
                                                 $sidebar = $('.sidebar');
@@ -361,15 +326,15 @@
                                                 });
                                             });
                                         });
-                                    </script>
-                                    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-                                    <script>
+    </script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
                                         window.TrackJS &&
                                             TrackJS.install({
                                                 token: "ee6fab19c5a04ac1a32a645abde4613a",
                                                 application: "black-dashboard-free"
                                             });
-                                    </script>
+    </script>
 </body>
 
 </html>

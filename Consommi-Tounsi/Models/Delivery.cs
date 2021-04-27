@@ -13,7 +13,6 @@ namespace Consommi_Tounsi.Models
         public float fresh { get; set; }
         public String location { get; set; }
         public String moyenT { get; set; }
-        public float weight { get; set; }
         public Administrator administrator { get; set; }
         public int? Delivery_ManFK { get; set; }
         public Delivery_Man Delivery_Man { get; set; }

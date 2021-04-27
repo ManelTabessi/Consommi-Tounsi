@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace Consommi_Tounsi.Controllers
 {
@@ -17,12 +18,12 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult ListLivraison()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/findAllDeli").Result;
-
+            HttpResponseMessage httpResponseMessage = client.GetAsync("findAllDeli").Result;
+            
             IEnumerable<Delivery> deliv;
-            if (httpResponseMessage.IsSuccessStatusCode)
+            if(httpResponseMessage.IsSuccessStatusCode)
             {
                 deliv = httpResponseMessage.Content.ReadAsAsync<IEnumerable<Delivery>>().Result;
             }
@@ -33,14 +34,13 @@ namespace Consommi_Tounsi.Controllers
             return View(deliv);
         }
 
-
         [HttpPost]
-        public ActionResult ListLivraison(DateTime dated, DateTime datef)
+        public ActionResult ListLivraison( DateTime dated, DateTime datef)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/afficheDispo/" + dated.ToString() + "/" + datef.ToString()).Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("afficheDispo/" + dated.ToString() + "/" + datef.ToString()).Result;
 
             IEnumerable<Delivery> deliv;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -73,7 +73,7 @@ namespace Consommi_Tounsi.Controllers
                 d.BaseAddress = new Uri(Baseurl);
                 d.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 // client.DefaultRequestHeaders.Add("X-Miva-API-Authorization", "MIVA xxxxxxxxxxxxxxxxxxxxxx");
-                var response = await d.PostAsJsonAsync("saveDeliv/" + id_deliv_man.ToString(), del);
+                var response = await d.PostAsJsonAsync("saveDeliv/" + id_deliv_man.ToString() , del);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("ListLivraison");
@@ -83,25 +83,31 @@ namespace Consommi_Tounsi.Controllers
         }
 
         // GET: Delivery/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
             return View();
         }
 
         // POST: Delivery/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id_deliv, DateTime date_debut, Delivery del)
         {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add update logic here
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
 
-                return RedirectToAction("Index");
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Delivery>("updateDeliv/" + id_deliv.ToString() + "/" + date_debut.ToString(), del);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("ListLivraison");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(del);
         }
 
         // GET: Delivery/Delete/5
@@ -129,7 +135,7 @@ namespace Consommi_Tounsi.Controllers
                     return RedirectToAction("ListLivraison");
                 }
             }
-            return View();
+            return View();       
         }
 
 
@@ -148,7 +154,7 @@ namespace Consommi_Tounsi.Controllers
                 client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
 
                 //HTTP POST
-                var putTask = client.DeleteAsync("dedeleteDileveryAutolete/");
+                var putTask = client.DeleteAsync("dedeleteDileveryAutolete");
                 putTask.Wait();
 
                 var result = putTask.Result;
@@ -169,7 +175,7 @@ namespace Consommi_Tounsi.Controllers
 
         // POST: Delivery_Man/affecterLivraisonALivreur
         [HttpPost]
-        public ActionResult affecterLivraisonALivreur(Delivery deliv, int id_deliv_man, int id_deliv)
+        public ActionResult affecterLivraisonALivreur(Delivery deliv , int id_deliv_man, int id_deliv)
         {
             using (var client = new HttpClient())
             {
@@ -188,6 +194,52 @@ namespace Consommi_Tounsi.Controllers
             return View();
         }
 
+        // GET: Delivery/Frais
 
+        public ActionResult Frais()
+        {
+
+            return View();
+        }
+        // POST: Delivery/Frais
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Frais(FraisLiv frais)
+        {
+            string Baseurl = "http://localhost:8089/SpringMVC/servlet/";
+            using (var d = new HttpClient())
+            {
+                d.BaseAddress = new Uri(Baseurl);
+                d.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                // client.DefaultRequestHeaders.Add("X-Miva-API-Authorization", "MIVA xxxxxxxxxxxxxxxxxxxxxx");
+                var response = await d.PostAsJsonAsync("calculLiv", frais);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("ListFrais");
+                }
+                
+            }
+            return View(frais);
+        }
+
+        // GET: Delivery
+        public ActionResult ListFrais()
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage httpResponseMessage = client.GetAsync("findAllFrais").Result;
+
+            IEnumerable<FraisLiv> frais;
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                frais = httpResponseMessage.Content.ReadAsAsync<IEnumerable<FraisLiv>>().Result;
+            }
+            else
+            {
+                frais = null;
+            }
+            return View(frais);
+        }
     }
 }

@@ -16,9 +16,9 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult ListLivreur()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/findAllDelivMan").Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("findAllDelivMan").Result;
 
             IEnumerable<Delivery_Man> delivm;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -35,9 +35,9 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult LivreurDispo()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/Disponibilité").Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("Disponibilité").Result;
 
             IEnumerable<Delivery_Man> delivm;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -54,9 +54,9 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult LivreurNoDispo()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/NoDisponibilité").Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("NoDisponibilité").Result;
 
             IEnumerable<Delivery_Man> delivm;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -74,9 +74,9 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult ListLivreur(int id_deliv_man)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/searchDelivery_ManById/" + id_deliv_man.ToString()).Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("searchDelivery_ManById/" + id_deliv_man.ToString()).Result;
 
             IEnumerable<Delivery_Man> delivm;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -93,9 +93,9 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult BestLivreur()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage1 = client.GetAsync("SpringMVC/servlet/BestLivreur").Result;
+            HttpResponseMessage httpResponseMessage1 = client.GetAsync("BestLivreur").Result;
 
             ViewBag.result = httpResponseMessage1.Content.ReadAsAsync<int>().Result;
 
@@ -130,26 +130,34 @@ namespace Consommi_Tounsi.Controllers
         }
 
         // GET: Delivery_Man/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
+
             return View();
         }
 
         // POST: Delivery_Man/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id_deliv_man, int chargeT_liv, Delivery_Man del)
         {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add update logic here
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
 
-                return RedirectToAction("Index");
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Delivery_Man>("updateDelivery_Man/" + id_deliv_man.ToString() + "/" + chargeT_liv.ToString(), del);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("ListLivreur");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(del);
         }
+
 
         // GET: Delivery_Man/Delete/5
         public ActionResult Delete(int id_deliv_man)
@@ -187,7 +195,7 @@ namespace Consommi_Tounsi.Controllers
 
         // POST: Delivery_Man/Prime
         [HttpPost]
-        public ActionResult Prime(Delivery_Man deliv)
+        public ActionResult Prime( Delivery_Man deliv)
         {
             using (var client = new HttpClient())
             {
@@ -215,7 +223,7 @@ namespace Consommi_Tounsi.Controllers
 
         // POST: Delivery_Man/ChargeDeTravail
         [HttpPost]
-        public ActionResult ChargeDeTravail(int id_deliv_man, Delivery_Man deliv)
+        public ActionResult ChargeDeTravail(int id_deliv_man , Delivery_Man deliv)
         {
             using (var client = new HttpClient())
             {
@@ -250,7 +258,7 @@ namespace Consommi_Tounsi.Controllers
                 client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
 
                 //HTTP POST
-                var putTask = client.PutAsJsonAsync<Delivery_Man>("mettreAjourLivreurBydispo/" + id_deliv_man.ToString() + "/" + etat.ToString(), deliv);
+                var putTask = client.PutAsJsonAsync<Delivery_Man>("mettreAjourLivreurBydispo/" + id_deliv_man.ToString()+ "/" + etat.ToString(), deliv);
                 putTask.Wait();
 
                 var result = putTask.Result;
@@ -265,5 +273,5 @@ namespace Consommi_Tounsi.Controllers
 
 
     }
-
+    
 }

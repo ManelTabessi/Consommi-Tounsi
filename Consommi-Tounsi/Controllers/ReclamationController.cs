@@ -17,9 +17,9 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult ListReclamation()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/findAllCompl").Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("findAllCompl").Result;
 
             IEnumerable<Reclamation> rec;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -48,7 +48,7 @@ namespace Consommi_Tounsi.Controllers
         // POST: Reclamation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Reclamation rec)
+        public async Task<ActionResult> Create(Reclamation rec , int id_client)
         {
             string Baseurl = "http://localhost:8089/SpringMVC/servlet/";
 
@@ -57,7 +57,7 @@ namespace Consommi_Tounsi.Controllers
                 dm.BaseAddress = new Uri(Baseurl);
                 dm.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 // client.DefaultRequestHeaders.Add("X-Miva-API-Authorization", "MIVA xxxxxxxxxxxxxxxxxxxxxx");
-                var response = await dm.PostAsJsonAsync("saveCompl/{id_client}", rec);
+                var response = await dm.PostAsJsonAsync("saveCompl/" + id_client.ToString() , rec);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("ListReclamation");

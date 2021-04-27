@@ -16,9 +16,9 @@ namespace Consommi_Tounsi.Controllers
         public ActionResult ListDecision(int id_recl)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:8089");
+            client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage httpResponseMessage = client.GetAsync("SpringMVC/servlet/afficherlesDecisions/" + id_recl.ToString()).Result;
+            HttpResponseMessage httpResponseMessage = client.GetAsync("afficherlesDecisions/" + id_recl.ToString()).Result;
 
             IEnumerable<Decision> dec;
             if (httpResponseMessage.IsSuccessStatusCode)
@@ -30,12 +30,6 @@ namespace Consommi_Tounsi.Controllers
                 dec = null;
             }
             return View(dec);
-        }
-
-        // GET: Decision/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // GET: Decision/Create
@@ -66,25 +60,32 @@ namespace Consommi_Tounsi.Controllers
         }
 
         // GET: Decision/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
+            
             return View();
         }
 
         // POST: Decision/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id_deci, string typedecision, Decision dec)
         {
-            try
+            using (var client = new HttpClient())
             {
-                // TODO: Add update logic here
+                client.BaseAddress = new Uri("http://localhost:8089/SpringMVC/servlet/");
 
-                return RedirectToAction("Index");
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync<Decision>("updateDecision/" + id_deci.ToString() + "/" + typedecision.ToString(), dec);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("../Reclamation/ListReclamation");
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(dec);
         }
 
         // GET: Decision/Delete/5
