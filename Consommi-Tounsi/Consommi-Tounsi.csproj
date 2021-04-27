@@ -185,6 +185,7 @@
     <Compile Include="Models\Delivery_Man.cs" />
     <Compile Include="Models\FraisLiv.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\publication.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Reclamation.cs" />
