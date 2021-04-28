@@ -179,10 +179,12 @@
     </Compile>
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Commandes.cs" />
     <Compile Include="Models\comments.cs" />
     <Compile Include="Models\Decision.cs" />
     <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\Delivery_Man.cs" />
+    <Compile Include="Models\Factures.cs" />
     <Compile Include="Models\FraisLiv.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
