@@ -165,10 +165,12 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CommandesController.cs" />
     <Compile Include="Controllers\commentsController.cs" />
     <Compile Include="Controllers\DecisionController.cs" />
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\Delivery_ManController.cs" />
+    <Compile Include="Controllers\FacturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\publicationController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
@@ -551,6 +553,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Commandes\" />
+    <Folder Include="Views\Factures\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
